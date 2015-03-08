@@ -46,6 +46,7 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
         this.modulePath = path.join('src', this.rootFolder, this.name);
         // Create the module namespaced by the folder path with slashes replaced by dots
         this.moduleName = this.projectName + '.' + this.rootFolder.replace(/\//g, '.') + '.' + this.name;
+        this.subPath = this.rootFolder.substring(this.rootFolder.indexOf('/') + 1);
 
         this.mkdir(this.modulePath);
         if(this.config.get('useCoffeescript')) {
