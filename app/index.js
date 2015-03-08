@@ -5,7 +5,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
 
-var NgbpGenerator = yeoman.generators.Base.extend({
+var IceNgbpGenerator = yeoman.generators.Base.extend({
     init: function () {
         this.pkg = require('../package.json');
 
@@ -121,4 +121,4 @@ var NgbpGenerator = yeoman.generators.Base.extend({
 
 });
 
-module.exports = NgbpGenerator;
+module.exports = IceNgbpGenerator;

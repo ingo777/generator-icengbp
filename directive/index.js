@@ -44,16 +44,17 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
         this.capitalModuleName = this._.capitalize(this.name);
         this.lowerModuleName = this.name.toLowerCase();
         this.modulePath = path.join('src', this.rootFolder, this.name);
-      this.moduleName = this.projectName + '.' + this.rootFolder.replace('/', '.') + '.' + this.name;
+        this.moduleName = this.projectName + '.' + this.rootFolder.replace('/', '.') + '.' + this.name;
+        this.subPath = this.rootFolder.substring(this.rootFolder.indexOf('/') + 1);
 
         this.mkdir(this.modulePath);
         if(this.config.get('useCoffeescript')) {
             this.template('_module.module.coffee', path.join(this.modulePath, this.name + '.module.coffee'));
-            this.template('_module.coffee', path.join(this.modulePath, this.name + '.ctrl.coffee'));
+            this.template('_module.coffee', path.join(this.modulePath, this.name + '.drv.coffee'));
             this.template('_moduleSpec.coffee', path.join(this.modulePath, this.name + '.spec.coffee'));
         } else {
             this.template('_module.module.js', path.join(this.modulePath, this.name + '.module.js'));
-            this.template('_module.js', path.join(this.modulePath, this.name + '.ctrl.js'));
+            this.template('_module.drv.js', path.join(this.modulePath, this.name + '.drv.js'));
             this.template('_moduleSpec.js', path.join(this.modulePath, this.name + '.spec.js'));
         }
         this.template('_moduleHtml.tpl.html', path.join(this.modulePath, this.name + '.tpl.html'));

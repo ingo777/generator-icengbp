@@ -1,5 +1,5 @@
 {
-  "name": "generator-ngbp",
+  "name": "generator-icengbp",
   "version": "0.1.5",
   "description": "Yeoman generator based on the ngBoilerplate kickstarter, a best-practice boilerplate for scalable Angular projects built on a highly modular, folder-by-feature structure.",
   "keywords": [
@@ -20,11 +20,11 @@
   ],
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "thardy/generator-ngbp",
+  "repository": "ingo777/generator-ngbp",
   "author": {
-    "name": "Tim Hardy",
+    "name": "Ingemar Strandberg",
     "email": "",
-    "url": "https://github.com/thardy"
+    "url": "https://github.com/ingo777"
   },
   "engines": {
     "node": ">=0.10.0"

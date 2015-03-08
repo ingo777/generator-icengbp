@@ -44,7 +44,7 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
         this.capitalModuleName = this._.capitalize(this.name);
         this.lowerModuleName = this.name.toLowerCase();
         this.modulePath = path.join('src', this.rootFolder, this.name);
-      this.moduleName = this.projectName + '.' + this.rootFolder.replace('/', '.') + '.' + this.name;
+        this.moduleName = this.projectName + '.' + this.rootFolder.replace('/', '.') + '.' + this.name;
 
         this.mkdir(this.modulePath);
         if(this.config.get('useCoffeescript')) {
@@ -53,7 +53,7 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
             this.template('_moduleSpec.coffee', path.join(this.modulePath, this.name + '.spec.coffee'));
         } else {
             this.template('_module.module.js', path.join(this.modulePath, this.name + '.module.js'));
-            this.template('_module.js', path.join(this.modulePath, this.name + '.ctrl.js'));
+            this.template('_module.ctrl.js', path.join(this.modulePath, this.name + '.ctrl.js'));
             this.template('_moduleSpec.js', path.join(this.modulePath, this.name + '.spec.js'));
         }
         this.template('_moduleHtml.tpl.html', path.join(this.modulePath, this.name + '.tpl.html'));
@@ -86,7 +86,7 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
         var file   = this.readFileAsString(path);
 
         if (file.indexOf(hook) === -1) {
-          hook = '])));';
+            hook = '])));';
         }
 
         if (file.indexOf(insert) === -1) {
