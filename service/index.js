@@ -48,16 +48,16 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
         this.moduleName = this.projectName + '.' + this.rootFolder.replace(/\//g, '.') + '.' + this.name;
 
         this.mkdir(this.modulePath);
-        if(this.config.get('useCoffeescript')) {
+        if (this.config.get('useCoffeescript')) {
             this.template('_module.module.coffee', path.join(this.modulePath, this.name + '.module.coffee'));
             this.template('_module.srv.coffee', path.join(this.modulePath, this.name + '.srv.coffee'));
-            this.template('_moduleSpec.coffee', path.join(this.modulePath, this.name + '.spec.coffee'));
+            this.template('_module.spec.coffee', path.join(this.modulePath, this.name + '.spec.coffee'));
         } else {
             this.template('_module.module.js', path.join(this.modulePath, this.name + '.module.js'));
             this.template('_module.srv.js', path.join(this.modulePath, this.name + '.srv.js'));
-            this.template('_moduleSpec.js', path.join(this.modulePath, this.name + '.spec.js'));
+            this.template('_module.spec.js', path.join(this.modulePath, this.name + '.spec.js'));
         }
-        this.template('_moduleHtml.tpl.html', path.join(this.modulePath, this.name + '.tpl.html'));
+        this.template('_module.tpl.html', path.join(this.modulePath, this.name + '.tpl.html'));
         this.template('_module.less', path.join(this.modulePath, this.name + '.less'));
 
         this._addModuleToAppJs(this.moduleName);
