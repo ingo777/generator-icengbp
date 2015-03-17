@@ -22,6 +22,16 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
                 message: 'Where do you want to place this module - what is the root folder?',
                 default: 'app'
             },
+            {
+              name: 'folderAndFileName',
+              message: 'You can choose another name for the folder or file names, you can do this here.',
+              default: this.name
+            },
+            {
+              name: 'moduleName',
+              message: 'What do you want the module name to be?',
+              default: this.name
+            }
 //            {
 //                type: 'confirm',
 //                name: 'includeRest',
@@ -32,6 +42,8 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
 
         this.prompt(prompts, function (props) {
             this.rootFolder = props.rootFolder;
+            this.folderAndFileName = props.folderAndFileName;
+            this.moduleName = props.moduleName;
 //            this.includeRest = props.includeRest;
 
             done();
@@ -43,24 +55,25 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
         this.camelModuleName = this._.camelize(this.name);
         this.capitalModuleName = this._.capitalize(this.name);
         this.lowerModuleName = this.name.toLowerCase();
-        this.modulePath = path.join('src', this.rootFolder, this.name);
+        this.modulePath = path.join('src', this.rootFolder, this.folderAndFileName);
+
         // Create the module namespaced by the folder path with slashes replaced by dots
-        this.moduleName = this.projectName + '.' + this.rootFolder.replace(/\//g, '.') + '.' + this.name;
+        this.fullModuleName = this.projectName + '.' + this.rootFolder.replace(/\//g, '.') + '.' + this.moduleName;
 
         this.mkdir(this.modulePath);
         if (this.config.get('useCoffeescript')) {
-            this.template('_module.module.coffee', path.join(this.modulePath, this.name + '.module.coffee'));
-            this.template('_module.srv.coffee', path.join(this.modulePath, this.name + '.srv.coffee'));
-            this.template('_module.spec.coffee', path.join(this.modulePath, this.name + '.spec.coffee'));
+            this.template('_module.module.coffee', path.join(this.modulePath, this.folderAndFileName + '.module.coffee'));
+            this.template('_module.srv.coffee', path.join(this.modulePath, this.folderAndFileName + '.srv.coffee'));
+            this.template('_module.spec.coffee', path.join(this.modulePath, this.folderAndFileName + '.spec.coffee'));
         } else {
-            this.template('_module.module.js', path.join(this.modulePath, this.name + '.module.js'));
-            this.template('_module.srv.js', path.join(this.modulePath, this.name + '.srv.js'));
-            this.template('_module.spec.js', path.join(this.modulePath, this.name + '.spec.js'));
+            this.template('_module.module.js', path.join(this.modulePath, this.folderAndFileName + '.module.js'));
+            this.template('_module.srv.js', path.join(this.modulePath, this.folderAndFileName + '.srv.js'));
+            this.template('_module.spec.js', path.join(this.modulePath, this.folderAndFileName + '.spec.js'));
         }
-        this.template('_module.tpl.html', path.join(this.modulePath, this.name + '.tpl.html'));
-        this.template('_module.less', path.join(this.modulePath, this.name + '.less'));
+        this.template('_module.tpl.html', path.join(this.modulePath, this.folderAndFileName + '.tpl.html'));
+        this.template('_module.less', path.join(this.modulePath, this.folderAndFileName + '.less'));
 
-        this._addModuleToAppJs(this.moduleName);
+        this._addModuleToAppJs(this.fullModuleName);
 
 //        if (this.includeRestfulService) {
 //            // Add RESTful service stuff here

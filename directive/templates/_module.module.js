@@ -5,6 +5,6 @@
 
     });
 
-}(angular.module("<%= moduleName %>", [
+}(angular.module("<%= fullModuleName %>", [
     'ui.router'
 ])));

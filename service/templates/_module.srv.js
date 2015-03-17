@@ -7,4 +7,4 @@
         };
     });
 
-}(angular.module("<%= moduleName %>")));
+}(angular.module("<%= fullModuleName %>")));

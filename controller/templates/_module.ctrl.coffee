@@ -1,4 +1,4 @@
-do (module=angular.module "<%= moduleName %>") ->
+do (module=angular.module "<%= fullModuleName %>") ->
   module.controller '<%= capitalModuleName %>Controller', () ->
     model = this
 

@@ -1,4 +1,4 @@
-do (module=angular.module "<%= moduleName %>", [
+do (module=angular.module "<%= fullModuleName %>", [
   'ui.router'
 ]) ->
   module.config ($stateProvider) ->
