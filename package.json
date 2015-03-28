@@ -1,7 +1,15 @@
 {
+  "author": {
+    "name": "Ingemar Strandberg",
+    "url": "https://github.com/ingo777"
+  },
   "name": "generator-icengbp",
-  "version": "0.1.5",
-  "description": "Yeoman generator based on the ngBoilerplate kickstarter, a best-practice boilerplate for scalable Angular projects built on a highly modular, folder-by-feature structure.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ingo777/generator-icengbp",
+  "bugs": "https://github.com/ingo777/generator-icengbp/issues",
+  "repository": "ingo777/generator-icengbp",
+  "license": "MIT",
+  "description": "This Yeoman generator is based on the ngBoilerplate kickstarter developed by Josh David Millers, a best-practice boilerplate for any scale Angular project built on a highly modular, folder-by-feature structure. The original Yeoman generator was developed by Tim Hardy who perfected the ngBoilerplate in his generator. In this version I added TypeScript support and support for generating services and directives (see the readme.md)",
   "keywords": [
     "yeoman-generator",
     "angular",
@@ -20,14 +28,7 @@
     "typescript",
     "ngbp"
   ],
-  "license": "MIT",
   "main": "app/index.js",
-  "repository": "ingo777/generator-icengbp",
-  "author": {
-    "name": "Ingemar Strandberg",
-    "email": "",
-    "url": "https://github.com/ingo777"
-  },
   "engines": {
     "node": ">=0.10.0"
   },
