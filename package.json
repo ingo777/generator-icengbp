@@ -16,11 +16,13 @@
     "grunt",
     "karma",
     "express",
-    "app"
+    "app",
+    "typescript",
+    "ngbp"
   ],
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "ingo777/generator-ngbp",
+  "repository": "ingo777/generator-icengbp",
   "author": {
     "name": "Ingemar Strandberg",
     "email": "",
