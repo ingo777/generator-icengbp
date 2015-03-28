@@ -5,9 +5,18 @@
  * automatically.
  */
 describe('home section', function () {
-    beforeEach(module('<%= projectName %>.home'));
+    describe('isCurrentUrl', function () {
+        var HomeCtrl, $scope;
 
-    it('should have a dummy test', inject(function() {
-        expect(true).toBeTruthy();
-    }));
+        beforeEach(module('<%= projectName %>.app.home %>'));
+
+        beforeEach(inject(function ($controller, $rootScope) {
+            $scope = $rootScope.$new();
+            HomeCtrl = $controller('<%= projectName %>.app.home.HomeController %>', {$scope: $scope});
+        }));
+
+        it('should have a dummy test', inject(function () {
+            expect(HomeCtrl).toBeTruthy();
+        }));
+    });
 });

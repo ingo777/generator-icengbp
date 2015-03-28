@@ -1,0 +1,11 @@
+<h1>Home of <%= _.humanize(projectName) %></h1>
+
+<p>Code it up</p>
+
+<p>
+    <span ng-bind="vm.someObject.someVar"></span>
+    <ul>
+        <li ng-repeat="item in vm.someObject.someList">{{item}}</li>
+    </ul>
+    <button class="btn btn-primary" ng-click="vm.someObject.someFunctionUsedByTheHomePage()">Click Me</button>
+</p>

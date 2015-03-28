@@ -38,6 +38,7 @@
     "touch": "0.0.3"
   },
   "devDependencies": {
+    "lodash": "^3.5.0",
     "mocha": "*"
   },
   "peerDependencies": {

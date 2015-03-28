@@ -6,15 +6,20 @@
 
     app.run(function () {});
 
-    app.controller('AppController', function ($scope) {
+    app.controller('<%= projectName %>.app.AppController', function ($scope) {
 
     });
 
 }(angular.module("<%= projectName %>", [
-    '<%= projectName %>.home',
-    '<%= projectName %>.about',
     'templates-app',
     'templates-common',
     'ui.router.state',
     'ui.router',
+    'ui.bootstrap',
+    'ngMessages',
+    'ngResource',
+    '<%= projectName %>.app.home',
+    '<%= projectName %>.app.about',
+    '<%= projectName %>.app.index',
+
 ])));

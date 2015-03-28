@@ -1,0 +1,34 @@
+<h1>About</h1>
+<h4>This is what I'm about to tell you</h4>
+<p>
+<div class="col-md-4 col-md-offset-2">
+    The time is (controller as syntax):
+</div>
+<div class="col-md-4">
+    {{vm.time}}
+</div>
+</p>
+<p>
+<div class="col-md-4 col-md-offset-2">
+    View model object:
+</div>
+<div class="col-md-4">
+    {{vm.someObject.test}}
+</div>
+</p>
+<p>
+<div class="col-md-4 col-md-offset-2">
+    Directly on $scope:
+</div>
+<div class="col-md-4">
+    {{foobar}}
+</div>
+</p>
+<p>
+<div class="col-md-4 col-md-offset-2">
+    Variable on the controller object, this should not work (...should be empty):
+</div>
+<div class="col-md-4">
+    {{time}}
+</div>
+</p>
