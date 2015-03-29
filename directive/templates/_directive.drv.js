@@ -9,7 +9,7 @@
                 // '&onClose': bind to an expression like a function call or something
             },
             restrict: 'EAC', // Element, Attribute, Class
-            templateUrl: '<%= subPath %><%= name %>/<%= name %>.tpl.html',
+            templateUrl: '<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html',
             replace: true, // the content of the directive template will replace the element that the directive is declared on
             transclude: false, // does the directive contain other
             require: "", // or ["^myTabs", "^ngModel"] where the ^ means it looks for the controller on the parents, without it looks for the controller on just its own element
@@ -17,7 +17,7 @@
 
             },
             controller: function ($scope, $element) {
-                var vm = this;
+
             }
         };
     }]);

@@ -17,7 +17,7 @@ module <%= fullModuleName %>
 
         private init(): void
         {
-            this.$stateProvider.state('<%= name %>', <angular.ui.IState>
+            this.$stateProvider.state('<%= folderAndFileName %>', <angular.ui.IState>
             {
                 url: '/<%= subPath %><%= folderAndFileName %>',
                 views:

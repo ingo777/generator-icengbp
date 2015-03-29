@@ -2,8 +2,13 @@
     'use strict';
 
     module.factory('<%= camelModuleName %>', function () {
-        return {
+        var noOfTests = 0;
 
+        return {
+            test: "Never tested",
+            testing: function() {
+                this.test = "Tested " + (++noOfTests) + " times!";
+            }
         };
     });
 

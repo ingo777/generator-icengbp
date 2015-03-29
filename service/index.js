@@ -76,7 +76,7 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
             this.template('_service.spec.ts', path.join(this.modulePath, this.folderAndFileName + '.spec.ts'));
         }
         else {
-            this.template('_controller.module.js', path.join(this.modulePath, this.folderAndFileName + '.module.js'));
+            this.template('_service.module.js', path.join(this.modulePath, this.folderAndFileName + '.module.js'));
             this.template('_service.srv.js', path.join(this.modulePath, this.folderAndFileName + '.srv.js'));
             this.template('_service.spec.js', path.join(this.modulePath, this.folderAndFileName + '.spec.js'));
         }

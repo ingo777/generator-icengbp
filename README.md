@@ -4,6 +4,11 @@
 > This generator is in turn based on the great generator-ngbp from where all the basic code has its origin.
 
 ## Latest Updates
+(03/29/15) 
+* Fixed some issues in gruntfile.js.
+* Fixed some issues in controller, directive and service sub modules.
+* Fixed some issues related to TypeScript generation.
+
 (03/28/15) Have done a lot to this generator including:
 * Removed CoffeeScript support
 * Added TypeScript support

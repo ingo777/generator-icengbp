@@ -2,7 +2,7 @@
     'use strict';
 
     module.config(function ($stateProvider) {
-        $stateProvider.state('<%= name %>', {
+        $stateProvider.state('<%= folderAndFileName %>', {
             url: '/<%= subPath %><%= folderAndFileName %>',
             views: {
                 "main": {

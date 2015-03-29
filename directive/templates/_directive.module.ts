@@ -17,7 +17,20 @@ module <%= fullModuleName %>
 
         private init(): void
         {
-
+            this.$stateProvider.state('<%= folderAndFileName %>', <angular.ui.IState>
+            {
+                //url: '/<%= subPath %><%= folderAndFileName %>',
+                //views:
+                //{
+                //    "main":
+                //    {
+                //        controller: <%= capitalModuleName %>Controller,
+                //        controllerAs: "vm",
+                //        templateUrl: '<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html'
+                //    }
+                //},
+                //data: { pageTitle: '<%= capitalModuleName %>' }
+            });
         }
     }
     angular.module("<%= fullModuleName %>", ['ui.router'])

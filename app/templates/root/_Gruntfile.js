@@ -35,10 +35,10 @@ module.exports = function(grunt) {
          * stylesheet, and 'unit' contains our app's unit tests.
          */
         app_files: {
-            js: [ './src/**/*.module.js', 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
+            js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
             jsunit: [ 'src/**/*.spec.js' ],
 
-            ts: [ './src/**/*.module.ts', 'src/**/*.ts', '!src/**/*.spec.ts', '!src/**/*.d.ts' ],
+            ts: [ 'src/**/*.ts', '!src/**/*.spec.ts', '!src/**/*.d.ts' ],
             tsunit: [ 'src/**/*.spec.ts' ],
             ts_refs: ['typings/**/*.d.ts'],
 

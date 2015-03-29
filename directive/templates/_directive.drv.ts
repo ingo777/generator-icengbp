@@ -28,15 +28,15 @@ module <%= fullModuleName %> {
         private noOfClicks: number;
 
         // Directive setup
-        public templateUrl = "<%= subPath %><%= name %>/<%= name %>.tpl.html";
+        public templateUrl = "<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html";
         public scope = { // Isolated scopes
             // test: '@', one-way binding from a parent scope to the isolated scope. If parent changes the isolated scope will reflect that change but not the other way around
-            // attribute: '=info': two-way binding between the attribute 'attribute' and the property 'info'
+            // attribute: '=info': two-way binding between the attribute 'attribute' and the property 'info'.
             // '&onClose': bind to an expression like a function call or something
         };
         public replace = true; // the content of the directive template will replace the element that the directive is declared on
-        public restrict = "EAC"; // Element, Attribute, Class
-        public transclude = false; // does the directive contain other
+        public restrict = "EAC"; // Restrict to Element, Attribute, Class
+        public transclude = false; // enables you to write other HTML stuff inside of the directive. Use with ng-transclude in the tag
         public require = ""; // or ["^myTabs", "^ngModel"] where the ^ means it looks for the controller on the parents, without it looks for the controller on just its own element
 
         public link: (scope: I<%= capitalModuleName %>Scope, element: angular.IAugmentedJQuery, attrs: angular.IAttributes) => void;

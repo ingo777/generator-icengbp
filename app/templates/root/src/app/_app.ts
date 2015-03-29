@@ -1,6 +1,6 @@
 ///<reference path="../../typings/angularjs/angular.d.ts"/>
 ///<reference path="../../vendor/angular-ui-router/api/angular-ui-router.d.ts"/>
-module < %= projectName % >.app {
+module <%= projectName %>.app {
     'use strict';
 
     export class AppConfig {
