@@ -1,4 +1,4 @@
-///<reference path="<%= pathBackToRoot %>typings/angularjs/angular.d.ts"/>
+ ///<reference path="<%= pathBackToRoot %>typings/angularjs/angular.d.ts"/>
 ///<reference path="<%= pathBackToRoot %>vendor/angular-ui-router/api/angular-ui-router.d.ts"/>
 ///<reference path="<%= folderAndFileName %>.drv.ts"/>
 
