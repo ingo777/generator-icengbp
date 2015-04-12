@@ -13,18 +13,18 @@
  */
 module <%= projectName %>.app.home
 {
-    'use strict';
+    "use strict";
 
     export interface IHomeScope extends angular.IScope {
         foobar: string;
     }
 
     export class HomeViewModel {
-        someVar:string = 'blue';
-        someList:Array<string> = ['one', 'two', 'three'];
+        someVar:string = "blue";
+        someList:Array<string> = ["one", "two", "three"];
 
         someFunctionUsedByTheHomePage():void {
-            alert('Congratulations');
+            alert("Congratulations");
         }
     }
 

@@ -13,7 +13,7 @@
 
 module <%= fullModuleName %>
 {
-    'use strict';
+    "use strict";
 
     export interface I<%= capitalModuleName %>Scope extends angular.IScope
     {

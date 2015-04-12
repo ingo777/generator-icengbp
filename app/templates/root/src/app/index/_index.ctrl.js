@@ -4,7 +4,7 @@
     module.controller('<%= projectName %>.app.index.IndexController', function ($scope) {
         var indexViewModel = this;
 
-        indexViewModel.testValue = "Testing value!";
+        indexViewModel.testValue = 'Testing value!';
 
         init();
 
@@ -13,8 +13,8 @@
         }
 
         indexViewModel.test = function() {
-            alert("Testing!");
+            alert('Testing!');
         };
     });
 
-}(angular.module("<%= projectName %>.app.index")));
+}(angular.module('<%= projectName %>.app.index')));

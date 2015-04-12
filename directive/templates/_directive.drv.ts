@@ -1,10 +1,10 @@
 /**
  * Each section of the site has its own module. It probably also has
  * submodules, though this boilerplate is too simple to demonstrate it. Within
- * 'src/app/home', however, could exist several additional folders representing
+ * "src/app/home", however, could exist several additional folders representing
  * additional modules that would then be listed as dependencies of this one.
- * For example, a 'note' section could have the submodules 'note.create',
- * 'note.delete', 'note.edit', etc.
+ * For example, a "note" section could have the submodules "note.create",
+ * "note.delete", "note.edit", etc.
  *
  * Regardless, so long as dependencies are managed correctly, the build process
  * will automatically take take of the rest.
@@ -15,7 +15,7 @@
 ///<reference path="<%= pathBackToRoot %>typings/angularjs/angular.d.ts"/>
 
 module <%= fullModuleName %> {
-    'use strict';
+    "use strict";
 
     export interface I<%= capitalModuleName %>Scope extends angular.IScope
     {
@@ -30,9 +30,9 @@ module <%= fullModuleName %> {
         // Directive setup
         public templateUrl = "<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html";
         public scope = { // Isolated scopes
-            // test: '@', one-way binding from a parent scope to the isolated scope. If parent changes the isolated scope will reflect that change but not the other way around
-            // attribute: '=info': two-way binding between the attribute 'attribute' and the property 'info'.
-            // '&onClose': bind to an expression like a function call or something
+            // test: "@", one-way binding from a parent scope to the isolated scope. If parent changes the isolated scope will reflect that change but not the other way around
+            // attribute: "=info": two-way binding between the attribute 'attribute' and the property 'info'.
+            // "&onClose": bind to an expression like a function call or something
         };
         public replace = true; // the content of the directive template will replace the element that the directive is declared on
         public restrict = "EAC"; // Restrict to Element, Attribute, Class
@@ -47,14 +47,14 @@ module <%= fullModuleName %> {
 
             this.link = (scope: I<%= capitalModuleName %>Scope, element: angular.IAugmentedJQuery, attrs: angular.IAttributes) =>
             {
-                scope.test = 'Testing, testing';
+                scope.test = "Testing, testing";
 
                 scope.testing = () =>
                 {
                     scope.test = "Has tested " + ++this.noOfClicks + " times!";
                 };
 
-                scope.$on('$destroy', this.destruct);
+                scope.$on("$destroy", this.destruct);
             };
         }
 
@@ -65,7 +65,7 @@ module <%= fullModuleName %> {
                 return new <%= capitalModuleName %>($parse);
             };
 
-            directive['$inject'] = ['$parse'];
+            directive["$inject"] = ["$parse"];
 
             return directive;
         }

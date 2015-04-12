@@ -4,7 +4,7 @@
 
 module <%= fullModuleName %>
 {
-    'use strict';
+    "use strict";
 
     export class <%= capitalModuleName %>Module
     {
@@ -17,23 +17,23 @@ module <%= fullModuleName %>
 
         private init(): void
         {
-            this.$stateProvider.state('<%= folderAndFileName %>', <angular.ui.IState>
+            this.$stateProvider.state("<%= folderAndFileName %>", <angular.ui.IState>
             {
-                url: '/<%= subPath %><%= folderAndFileName %>',
+                url: "/<%= subPath %><%= folderAndFileName %>",
                 views:
                 {
                     "main":
                     {
                         controller: <%= capitalModuleName %>Controller,
                         controllerAs: "vm",
-                        templateUrl: '<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html'
+                        templateUrl: "<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html"
                     }
                 },
-                data: { pageTitle: '<%= capitalModuleName %>' }
+                data: {pageTitle: "<%= capitalModuleName %>"}
             });
         }
     }
-    angular.module("<%= fullModuleName %>", ['ui.router'])
+    angular.module("<%= fullModuleName %>", ["ui.router"])
         .config(["$stateProvider", ($stateProvider: angular.ui.IStateProvider) => {
             return new <%= capitalModuleName %>Module($stateProvider);
         }]);

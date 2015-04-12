@@ -10,10 +10,10 @@
 ///<reference path="<%= pathBackToRoot %>typings/angularjs/angular-mocks.d.ts" />
 
 describe("<%= camelModuleName %> section", () => {
-    describe('isCurrentUrl', () => {
+    describe("isCurrentUrl", () => {
         var element, scope, compile;
 
-        beforeEach(module('<%= fullModuleName %>'));
+        beforeEach(module("<%= fullModuleName %>"));
 
         beforeEach(inject(($compile, $rootScope) => {
             scope = $rootScope.$new();

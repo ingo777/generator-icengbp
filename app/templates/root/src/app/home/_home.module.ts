@@ -3,7 +3,7 @@
 ///<reference path="home.ctrl.ts"/>
 module <%= projectName %>.app.home
 {
-  'use strict';
+  "use strict";
 
   export class HomeModule
   {
@@ -16,23 +16,23 @@ module <%= projectName %>.app.home
 
     private init(): void
     {
-      this.$stateProvider.state('home', <angular.ui.IState>
+      this.$stateProvider.state("home", <angular.ui.IState>
       {
-        url: '/home',
+        url: "/home",
         views:
         {
           "main":
           {
             controller: HomeController,
             controllerAs: "vm",
-            templateUrl: 'home/home.tpl.html'
+            templateUrl: "home/home.tpl.html"
           }
         },
-        data: { pageTitle: 'Home' }
+        data: {pageTitle: "Home"}
       });
     }
   }
-  angular.module("<%= projectName %>.app.home", ['ui.router'])
+  angular.module("<%= projectName %>.app.home", ["ui.router"])
     .config(["$stateProvider", ($stateProvider: angular.ui.IStateProvider) => {
       return new HomeModule($stateProvider);
     }]);

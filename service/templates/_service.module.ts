@@ -4,7 +4,7 @@
 
 module <%= fullModuleName %>
 {
-    'use strict';
+    "use strict";
 
     export class <%= capitalModuleName %>Module
     {
@@ -20,7 +20,7 @@ module <%= fullModuleName %>
 
         }
     }
-    angular.module("<%= fullModuleName %>", ['ui.router'])
+    angular.module("<%= fullModuleName %>", ["ui.router"])
         .config(["$stateProvider", ($stateProvider: angular.ui.IStateProvider, $parse: angular.IParseProvider) => {
             return new <%= capitalModuleName %>Module($stateProvider, $parse);
         }]);

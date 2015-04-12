@@ -4,7 +4,7 @@
 
 module <%= projectName %>.app.about
 {
-  'use strict';
+  "use strict";
 
   export class AboutModule
   {
@@ -17,23 +17,23 @@ module <%= projectName %>.app.about
 
     private init(): void
     {
-      this.$stateProvider.state('about', <angular.ui.IState>
+      this.$stateProvider.state("about", <angular.ui.IState>
       {
-        url: '/about',
+        url: "/about",
         views:
         {
           "main":
           {
             controller: AboutController,
             controllerAs: "vm",
-            templateUrl: 'about/about.tpl.html'
+            templateUrl: "about/about.tpl.html"
           }
         },
-        data: { pageTitle: 'About' }
+        data: {pageTitle: "About"}
       });
     }
   }
-  angular.module("<%= projectName %>.app.about", ['ui.router'])
+  angular.module("<%= projectName %>.app.about", ["ui.router"])
     .config(["$stateProvider", ($stateProvider: angular.ui.IStateProvider) => {
       return new AboutModule($stateProvider);
     }]);

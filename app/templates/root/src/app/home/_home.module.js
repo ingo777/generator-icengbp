@@ -10,16 +10,15 @@
         $stateProvider.state('home', {
             url: '/home',
             views: {
-                "main": {
+                'main': {
                     controller: '<%= projectName %>.app.home.HomeController as vm',
                     templateUrl: 'home/home.tpl.html'
                 }
             },
-            data:{ pageTitle: 'Home' }
+            data: {pageTitle: 'Home'}
         });
     });
-
-// The name of the module, followed by its dependencies (at the bottom to facilitate enclosure)
-}(angular.module("<%= projectName %>.app.home", [
+    // The name of the module, followed by its dependencies (at the bottom to facilitate enclosure)
+}(angular.module('<%= projectName %>.app.home', [
     'ui.router'
 ])));

@@ -5,15 +5,15 @@
         $stateProvider.state('index', {
             url: '/',
             views: {
-                "main": {
+                'main': {
                     controller: '<%= projectName %>.app.index.IndexController as indexViewModel'
                     //templateUrl: 'index/index.tpl.html'
                 }
             },
-            data:{ pageTitle: 'Index' }
+            data: {pageTitle: 'Index'}
         });
     });
 
-}(angular.module("<%= projectName %>.app.index", [
+}(angular.module('<%= projectName %>.app.index', [
     'ui.router'
 ])));

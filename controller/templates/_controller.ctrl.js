@@ -11,4 +11,4 @@
         }
     });
 
-}(angular.module("<%= fullModuleName %>")));
+}(angular.module('<%= fullModuleName %>')));

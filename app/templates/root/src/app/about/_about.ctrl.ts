@@ -2,7 +2,7 @@
 
 module <%= projectName %>.app.about
 {
-    'use strict';
+    "use strict";
 
     export interface IAboutScope extends angular.IScope {
         foobar: string;

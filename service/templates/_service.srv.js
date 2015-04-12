@@ -5,11 +5,11 @@
         var noOfTests = 0;
 
         return {
-            test: "Never tested",
+            test: 'Never tested',
             testing: function() {
-                this.test = "Tested " + (++noOfTests) + " times!";
+                this.test = 'Tested ' + (++noOfTests) + '' times!'';
             }
         };
     });
 
-}(angular.module("<%= fullModuleName %>")));
+}(angular.module('<%= fullModuleName %>')));

@@ -1,14 +1,14 @@
 ///<reference path="../../typings/angularjs/angular.d.ts"/>
 ///<reference path="../../vendor/angular-ui-router/api/angular-ui-router.d.ts"/>
 module <%= projectName %>.app {
-    'use strict';
+    "use strict";
 
     export class AppConfig {
         static $injector = ["$stateProvider", "$urlRouterProvider"];
 
         constructor(private $stateProvider:angular.ui.IStateProvider,
                     private $urlRouterProvider:angular.ui.IUrlRouterProvider) {
-            $urlRouterProvider.otherwise('/home');
+            $urlRouterProvider.otherwise("/home");
         }
     }
 
@@ -30,16 +30,16 @@ module <%= projectName %>.app {
     }
 
     angular.module("<%= projectName %>", [
-        'templates-app',
-        'templates-common',
-        'ui.router.state',
-        'ui.router',
-        'ui.bootstrap',
-        'ngMessages',
-        'ngResource',
-        '<%= projectName %>.app.home',
-        '<%= projectName %>.app.about',
-        '<%= projectName %>.app.index',
+        "templates-app",
+        "templates-common",
+        "ui.router.state",
+        "ui.router",
+        "ui.bootstrap",
+        "ngMessages",
+        "ngResource",
+        "<%= projectName %>.app.home",
+        "<%= projectName %>.app.about",
+        "<%= projectName %>.app.index",
     ]).config(["$stateProvider", "$urlRouterProvider", ($stateProvider:angular.ui.IStateProvider,
                                                         $urlRouterProvider:angular.ui.IUrlRouterProvider) => {
         return new AppConfig($stateProvider, $urlRouterProvider);

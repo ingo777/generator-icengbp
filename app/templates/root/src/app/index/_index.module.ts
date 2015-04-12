@@ -4,7 +4,7 @@
 
 module <%= projectName %>.app.index
 {
-    'use strict';
+    "use strict";
 
     export class IndexModule
     {
@@ -17,23 +17,23 @@ module <%= projectName %>.app.index
 
         private init(): void
         {
-            this.$stateProvider.state('index', <angular.ui.IState>
+            this.$stateProvider.state("index", <angular.ui.IState>
             {
-                url: '/index',
+                url: "/index",
                 views:
                 {
                     "main":
                     {
                         controller: IndexController,
                         controllerAs: "indexViewModel",
-                        templateUrl: 'index/index.tpl.html'
+                        templateUrl: "index/index.tpl.html"
                     }
                 },
-                data: { pageTitle: 'Index' }
+                data: {pageTitle: "Index"}
             });
         }
     }
-    angular.module("<%= projectName %>.app.index", ['ui.router'])
+    angular.module("<%= projectName %>.app.index", ["ui.router"])
         .config(["$stateProvider", ($stateProvider: angular.ui.IStateProvider) => {
             return new IndexModule($stateProvider);
         }]);

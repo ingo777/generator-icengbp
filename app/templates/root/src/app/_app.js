@@ -10,7 +10,7 @@
 
     });
 
-}(angular.module("<%= projectName %>", [
+}(angular.module('<%= projectName %>', [
     'templates-app',
     'templates-common',
     'ui.router.state',

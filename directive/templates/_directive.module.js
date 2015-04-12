@@ -5,7 +5,7 @@
         //$stateProvider.state('<%= folderAndFileName %>', {
         //    url: '/<%= subPath %><%= folderAndFileName %>',
         //    views: {
-        //        "main": {
+        //        'main': {
         //            controller: '<%= fullModuleName %>.<%= capitalModuleName %>Controller as vm',
         //            templateUrl: '<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html'
         //        }
@@ -14,6 +14,6 @@
         //});
     });
 
-}(angular.module("<%= fullModuleName %>", [
+}(angular.module('<%= fullModuleName %>', [
     'ui.router'
 ])));

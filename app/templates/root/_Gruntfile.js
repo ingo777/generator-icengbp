@@ -89,12 +89,14 @@ module.exports = function(grunt) {
                 'vendor/bootstrap/dist/js/bootstrap.js',
                 'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
                 'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
-                'vendor/angular-ui/build/angular-ui.js',
                 'vendor/angular-ui-router/release/angular-ui-router.js',
                 'vendor/angular-ui-utils/modules/route/route.js'
             ],
             css: [
-                'vendor/angular-ui/build/angular-ui.css'
+
+            ],
+            fonts: [
+
             ]
         }
     };
@@ -170,28 +172,8 @@ module.exports = function(grunt) {
                 options: {
                     replacements: [
                         {
-                            pattern: '/// <reference path="../../typings',
-                            replacement: '/// <reference path="../../../typings'
-                        },
-                        {
-                            pattern: '///<reference path="../../typings',
-                            replacement: '///<reference path="../../../typings'
-                        },
-                        {
-                            pattern: '/// <reference path="../../vendor',
-                            replacement: '/// <reference path="../../../vendor'
-                        },
-                        {
-                            pattern: '///<reference path="../../vendor',
-                            replacement: '///<reference path="../../../vendor'
-                        },
-                        {
-                            pattern: '/// <reference path="../../node_modules',
-                            replacement: '/// <reference path="../../../node_modules'
-                        },
-                        {
-                            pattern: '///<reference path="../../node_modules',
-                            replacement: '///<reference path="../../../node_modules'
+                            pattern: '/// <reference path="../../',
+                            replacement: '/// <reference path="../../../'
                         }
                     ]
                 }

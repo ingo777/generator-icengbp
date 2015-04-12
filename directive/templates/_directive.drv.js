@@ -12,7 +12,7 @@
             templateUrl: '<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html',
             replace: true, // the content of the directive template will replace the element that the directive is declared on
             transclude: false, // does the directive contain other
-            require: "", // or ["^myTabs", "^ngModel"] where the ^ means it looks for the controller on the parents, without it looks for the controller on just its own element
+            require: '', // or ['^myTabs', '^ngModel'] where the ^ means it looks for the controller on the parents, without it looks for the controller on just its own element
             link: function (scope, element, attrs) {
 
             },
@@ -21,4 +21,4 @@
             }
         };
     }]);
-}(angular.module("<%= fullModuleName %>")));
+}(angular.module('<%= fullModuleName %>')));

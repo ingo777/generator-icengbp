@@ -16,7 +16,7 @@
 
 module <%= fullModuleName %>
 {
-    'use strict';
+    "use strict";
 
     export interface I<%= capitalModuleName %>
     {
@@ -51,7 +51,7 @@ module <%= fullModuleName %>
                 return new <%= capitalModuleName %>($parse, $http, $location);
             };
 
-            factory['$inject'] = ['$parse', '$http', '$location'];
+            factory["$inject"] = ["$parse", "$http", "$location"];
 
             return factory;
         }

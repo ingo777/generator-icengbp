@@ -78,8 +78,18 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
             {
                 type: 'confirm',
                 name: 'useTypeScript',
-                message: 'Would you like to use TypeScript?',
+                message: 'Would you like to use TypeScript (YES default)?',
                 default: true
+            },
+            {
+                type: 'list',
+                name: 'buildType',
+                message: 'What build system do you want to use (Gulp default)?',
+                choices: [
+                    'Gulp',
+                    'Grunt'
+                ],
+                default: 'Gulp'
             }
         ];
 
@@ -87,6 +97,7 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
             this.projectName = props.projectName;
             this.author = props.author;
             this.useTypeScript = props.useTypeScript;
+            this.buildType = props.buildType;
 
             done();
         }.bind(this));
@@ -95,6 +106,7 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
     config: function() {
         this.config.set('projectName', this.projectName);
         this.config.set('useTypeScript', this.useTypeScript);
+        this.config.set('buildType', this.buildType);
         this.config.save();
     },
 
@@ -102,6 +114,7 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
         var root = this.isPathAbsolute(source) ? source : path.join(this.sourceRoot(), source);
         var files = this.expandFiles('**', { dot: true, cwd: root });
         var useTypeScript = this.config.get('useTypeScript');
+        var buildType = this.config.get('buildType');
 
         for (var i = 0; i < files.length; i++) {
             var f = files[i];
@@ -111,6 +124,11 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
             if (fIsSource) {
                 if ((useTypeScript && fExt == 'js') || (!useTypeScript && fExt == 'ts')) {isExcluded = true;}
             }
+
+            if (buildType == 'Gulp' && f.toLowerCase() == '_gruntfile.js') { isExcluded = true }
+            if (buildType == 'Grunt' && f.toLowerCase() == '_gulpfile.js') { isExcluded = true }
+            if (buildType == 'Grunt' && f.toLowerCase() == '_gulp.config.js') { isExcluded = true }
+
             var src = path.join(root, f);
             if (!isExcluded) {
                 if (path.basename(f).indexOf('_') == 0) {

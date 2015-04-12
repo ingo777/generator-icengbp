@@ -10,17 +10,17 @@
 ///<reference path="<%= pathBackToRoot %>typings/angularjs/angular-mocks.d.ts" />
 
 describe("<%= camelModuleName %> section", () => {
-    describe('isCurrentUrl', () => {
+    describe("isCurrentUrl", () => {
         var <%= capitalModuleName %>Ctrl, $scope;
 
-        beforeEach(module('<%= fullModuleName %>'));
+        beforeEach(module("<%= fullModuleName %>"));
 
         beforeEach(inject(($controller, $rootScope) => {
             $scope = $rootScope.$new();
-            <%= capitalModuleName %>Ctrl = $controller('<%= fullModuleName %>.<%= capitalModuleName %>Controller', {$scope: $scope});
+            <%= capitalModuleName %>Ctrl = $controller("<%= fullModuleName %>.<%= capitalModuleName %>Controller", {$scope: $scope});
         }));
 
-        it('should have a dummy test', inject(function () {
+        it("should have a dummy test", inject(function () {
             expect(<%= capitalModuleName %>Ctrl).toBeTruthy();
         }));
 

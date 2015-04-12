@@ -3,14 +3,14 @@
         $stateProvider.state('about', {
             url: '/about',
             views: {
-                "main": {
+                'main': {
                     controller: '<%= projectName %>.app.about.AboutController as vm',
                     templateUrl: 'about/about.tpl.html'
                 }
             },
-            data:{ pageTitle: 'About' }
+            data: {pageTitle: 'About'}
         });
     });
-}(angular.module("<%= projectName %>.app.about", [
+}(angular.module('<%= projectName %>.app.about', [
     'ui.router'
 ])));
