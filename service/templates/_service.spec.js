@@ -1,7 +1,11 @@
+/* jshint -W117, -W030 */
 describe('<%= camelModuleName %> section', function () {
-    beforeEach(module('<%= fullModuleName %>'));
+    beforeEach(function() {
+        bard.appModule('<%= fullModuleName %>');
+        bard.inject('$http', '$q');
+    });
 
-    it('should have a dummy test', inject(function() {
-        expect(true).toBeTruthy();
-    }));
+    it('should have a dummy test', function () {
+        expect(true).to.be.ok;
+    });
 });

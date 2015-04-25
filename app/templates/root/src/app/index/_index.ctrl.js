@@ -2,9 +2,11 @@
     'use strict';
 
     module.controller('<%= projectName %>.app.index.IndexController', function ($scope) {
-        var indexViewModel = this;
+        var index = this;
+        var date = new Date();
 
-        indexViewModel.testValue = 'Testing value!';
+        index.testValue = 'Testing value!';
+        index.year = date.getFullYear();
 
         init();
 
@@ -12,7 +14,7 @@
 
         }
 
-        indexViewModel.test = function() {
+        index.test = function() {
             alert('Testing!');
         };
     });

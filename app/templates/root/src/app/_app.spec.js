@@ -1,17 +1,20 @@
+/* jshint -W117, -W030 */
 describe('AppController', function () {
     describe('isCurrentUrl', function () {
         var AppCtrl, $location, $scope;
 
-        beforeEach(module('<%= projectName %>'));
+        beforeEach(function() {
+            bard.appModule('<%= projectName %>');
+            bard.inject('$controller', '$location', '$rootScope');
+        });
 
-        beforeEach(inject(function ($controller, _$location_, $rootScope) {
-            $location = _$location_;
+        beforeEach(function() {
             $scope = $rootScope.$new();
             AppCtrl = $controller('<%= projectName %>.app.AppController', {$location: $location, $scope: $scope});
-        }));
+        });
 
-        it('should pass a dummy test', inject(function () {
-            expect(AppCtrl).toBeTruthy();
-        }));
+        it('should pass a dummy test', function() {
+            expect(AppCtrl).to.be.ok;
+        });
     });
 });

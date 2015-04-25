@@ -25,8 +25,8 @@ module <%= projectName %>.app.index
                     "main":
                     {
                         controller: IndexController,
-                        controllerAs: "indexViewModel",
-                        templateUrl: "index/index.tpl.html"
+                        controllerAs: "index"
+                        //templateUrl: "/src/app/index/index.tpl.html"
                     }
                 },
                 data: {pageTitle: "Index"}

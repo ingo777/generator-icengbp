@@ -1,15 +1,19 @@
+/* jshint -W117, -W030 */
 describe('<%= camelModuleName %> section', function () {
     describe('isCurrentUrl', function () {
         var <%= capitalModuleName %>Drv, $scope;
 
-        beforeEach(module('<%= fullModuleName %>'));
+        beforeEach(function() {
+            bard.appModule('<%= fullModuleName %>');
+            bard.inject('$compile', '$rootScope');
+        });
 
-        beforeEach(inject(function ($compile, $rootScope) {
+        beforeEach(function() {
             $scope = $rootScope.$new();
-        }));
+        });
 
-        it('should have a dummy test', inject(function () {
-            expect(true).toBeTruthy();
-        }));
+        it('should have a dummy test', function () {
+            expect(true).to.be.ok;
+        });
     });
 });

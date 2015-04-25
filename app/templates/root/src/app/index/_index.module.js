@@ -6,8 +6,8 @@
             url: '/',
             views: {
                 'main': {
-                    controller: '<%= projectName %>.app.index.IndexController as indexViewModel'
-                    //templateUrl: 'index/index.tpl.html'
+                    controller: '<%= projectName %>.app.index.IndexController as index'
+                    //templateUrl: '/src/app/index/index.tpl.html'
                 }
             },
             data: {pageTitle: 'Index'}

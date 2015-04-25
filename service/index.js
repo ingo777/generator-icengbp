@@ -73,15 +73,13 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
         if (this.config.get('useTypeScript')) {
             this.template('_service.module.ts', path.join(this.modulePath, this.folderAndFileName + '.module.ts'));
             this.template('_service.srv.ts', path.join(this.modulePath, this.folderAndFileName + '.srv.ts'));
-            this.template('_service.spec.ts', path.join(this.modulePath, this.folderAndFileName + '.spec.ts'));
-        }
+       }
         else {
             this.template('_service.module.js', path.join(this.modulePath, this.folderAndFileName + '.module.js'));
             this.template('_service.srv.js', path.join(this.modulePath, this.folderAndFileName + '.srv.js'));
-            this.template('_service.spec.js', path.join(this.modulePath, this.folderAndFileName + '.spec.js'));
         }
-        this.template('_service.tpl.html', path.join(this.modulePath, this.folderAndFileName + '.tpl.html'));
-        this.template('_service.less', path.join(this.modulePath, this.folderAndFileName + '.less'));
+        // All spec files is Javascript
+        this.template('_service.spec.js', path.join(this.modulePath, this.folderAndFileName + '.spec.js'));
 
         this._addModuleToAppJs(this.fullModuleName);
 
@@ -91,7 +89,7 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
     },
 
     touchIndexHtml: function() {
-        // Touch the index.html file to force the index grunt task to rebuild it (that task adds the new module to the scripts)
+        // Touch the index.html file to force the 'inject' gulp task to rebuild it (that task adds the new module to the scripts)
         var indexHtmlFilePath = 'src/index.html';
         touch(indexHtmlFilePath, {mtime: true});
     },

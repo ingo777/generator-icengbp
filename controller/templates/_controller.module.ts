@@ -25,8 +25,8 @@ module <%= fullModuleName %>
                     "main":
                     {
                         controller: <%= capitalModuleName %>Controller,
-                        controllerAs: "vm",
-                        templateUrl: "<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html"
+                        controllerAs: "<%= camelModuleName %>",
+                        templateUrl: "<%= moduleUrlPath %>/<%= folderAndFileName %>.tpl.html"
                     }
                 },
                 data: {pageTitle: "<%= capitalModuleName %>"}

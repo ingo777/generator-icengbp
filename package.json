@@ -24,7 +24,7 @@
         "framework",
         "module",
         "client",
-        "grunt",
+        "gulp",
         "karma",
         "express",
         "app",

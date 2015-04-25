@@ -49,6 +49,7 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
         this.capitalModuleName = this._.capitalize(this.moduleName);
         this.lowerModuleName = this.moduleName.toLowerCase();
         this.modulePath = path.join('src', this.rootFolder, this.folderAndFileName);
+        this.moduleUrlPath = '/' + path.join('src', this.rootFolder, this.folderAndFileName).replace(/\\/g, '/');
         // Create the module namespaced by the folder path with slashes replaced by dots
         this.fullModuleName = this.projectName + '.' + this.rootFolder.replace(/\//g, '.') + '.' + this.moduleName;
         this.pathBackToRoot = "../../../";
@@ -73,13 +74,14 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
         if (this.config.get('useTypeScript')) {
             this.template('_directive.module.ts', path.join(this.modulePath, this.folderAndFileName + '.module.ts'));
             this.template('_directive.drv.ts', path.join(this.modulePath, this.folderAndFileName + '.drv.ts'));
-            this.template('_directive.spec.ts', path.join(this.modulePath, this.folderAndFileName + '.spec.ts'));
         }
         else {
             this.template('_directive.module.js', path.join(this.modulePath, this.folderAndFileName + '.module.js'));
             this.template('_directive.drv.js', path.join(this.modulePath, this.folderAndFileName + '.drv.js'));
-            this.template('_directive.spec.js', path.join(this.modulePath, this.folderAndFileName + '.spec.js'));
         }
+        // All spec files is Javascript
+        this.template('_directive.spec.js', path.join(this.modulePath, this.folderAndFileName + '.spec.js'));
+
         this.template('_directive.tpl.html', path.join(this.modulePath, this.folderAndFileName + '.tpl.html'));
         this.template('_directive.less', path.join(this.modulePath, this.folderAndFileName + '.less'));
 
@@ -91,7 +93,7 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
     },
 
     touchIndexHtml: function() {
-        // Touch the index.html file to force the index grunt task to rebuild it (that task adds the new module to the scripts)
+        // Touch the index.html file to force the 'inject' gulp task to rebuild it (that task adds the new module to the scripts)
         var indexHtmlFilePath = 'src/index.html';
         touch(indexHtmlFilePath, {mtime: true});
     },

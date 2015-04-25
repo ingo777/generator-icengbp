@@ -24,8 +24,8 @@
     module.controller('<%= projectName %>.app.home.HomeController', function () {
         // The top section of a controller should be lean and make it easy to see the "signature" of the controller
         //  at a glance.  All function definitions should be contained lower down.
-        var vm = this;
-        vm.someObject = HomeViewModel;
+        var home = this;
+        home.someObject = HomeViewModel;
 
         init();
 

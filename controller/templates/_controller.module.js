@@ -6,8 +6,8 @@
             url: '/<%= subPath %><%= folderAndFileName %>',
             views: {
                 'main': {
-                    controller: '<%= fullModuleName %>.<%= capitalModuleName %>Controller as vm',
-                    templateUrl: '<%= subPath %><%= folderAndFileName %>/<%= folderAndFileName %>.tpl.html'
+                    controller: '<%= fullModuleName %>.<%= capitalModuleName %>Controller as <%= camelModuleName %>',
+                    templateUrl: '<%= moduleUrlPath %>/<%= folderAndFileName %>.tpl.html'
                 }
             },
             data: {pageTitle: '<%= capitalModuleName %>'}

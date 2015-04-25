@@ -25,8 +25,8 @@ module <%= projectName %>.app.about
           "main":
           {
             controller: AboutController,
-            controllerAs: "vm",
-            templateUrl: "about/about.tpl.html"
+            controllerAs: "about",
+            templateUrl: "/src/app/about/about.tpl.html"
           }
         },
         data: {pageTitle: "About"}

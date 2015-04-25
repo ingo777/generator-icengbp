@@ -2,7 +2,7 @@
     'use strict';
 
     module.controller('<%= fullModuleName %>.<%= capitalModuleName %>Controller', function () {
-        var vm = this;
+        var <%= camelModuleName %> = this;
 
         init();
 

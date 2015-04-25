@@ -1,8 +1,6 @@
 {
-    <% if (buildType == "Gulp") { %>
-        "scripts": {
+    "scripts": {
         "postinstall": "gulp wiredep"
     },
-    <% } %>
     "directory": "vendor"
 }

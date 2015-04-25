@@ -4,9 +4,9 @@
     };
 
     app.controller('<%= projectName %>.app.about.AboutController', function ($scope) {
-        var vm = this;
-        vm.time = new Date().toTimeString();
-        vm.someObject = AboutViewModel;
+        var about = this;
+        about.time = new Date().toTimeString();
+        about.someObject = AboutViewModel;
         this.time = new Date().toTimeString();
 
         init();

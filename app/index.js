@@ -4,6 +4,24 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
+function isTestFile(file) {
+    var specSuffix = '.spec.js';
+    var isSpec = file.indexOf(specSuffix, file.length - specSuffix.length) !== -1;
+
+    if (isSpec) {
+        return true;
+    }
+
+    var testHelpersSuffix = 'test-helpers';
+    var folder = path.dirname(file);
+    var isTestHelpers = folder.indexOf(testHelpersSuffix, folder.length - testHelpersSuffix.length) !== -1;
+
+    if (isTestHelpers) {
+        return true;
+    }
+
+    return false;
+}
 
 var IceNgbpGenerator = yeoman.generators.Base.extend({
     init: function () {
@@ -28,30 +46,29 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
                         'You need to run ') + chalk.cyan.bold("bower install") + chalk.green(' and ') + chalk.cyan.bold("npm install") +
                     chalk.green(' to get the dependencies.\n' +
                     'You might also need to get the typed definition files from the tsd.json file if you\'re using TypeScript.' +
-                    'Simply running ') + chalk.cyan.bold("grunt watch") + chalk.green(' will do the following:\n' +
+                    'Simply running ') + chalk.cyan.bold("gulp serve-build") + chalk.green(' will do the following:\n' +
                     ' - Build everything (concat, create js templates of html, etc) and place it into a "build" folder\n' +
                     ' - Run all your tests\n' +
                     ' - Watch your files for changes to do the above without any intervention\n' +
-                    ' - Launch express server to host your app at http://localhost:9000/index.html\n' +
-                    ' - Setup LiveReload so you immediately see changes in your browser (you still have to enable LiveReload on your browser)\n')
+                    ' - Launch express server to host your app at http://localhost:3000/index.html\n' +
+                    ' - Setup Browser Sync so you immediately see changes in your browser\n')
                 );
             }
         });
 
         // Now we can bind to the dependencies installed event
         this.on('dependenciesInstalled', function() {
-            //this.spawnCommand('grunt', ['build']);
             this.log(chalk.green(
                 '\nSoon you\'re good to go!!!!\n' +
                 'You need to run ') + chalk.cyan.bold("bower install") + chalk.green(' and ') + chalk.cyan.bold("npm install") +
                 chalk.green(' to get the dependencies.\n' +
                 'You might also need to get the typed definition files from the tsd.json file if you\'re using TypeScript.' +
-                'Simply running ') + chalk.cyan.bold("grunt watch") + chalk.green(' will do the following:\n' +
+                'Simply running ') + chalk.cyan.bold("gulp serve-build") + chalk.green(' will do the following:\n' +
                 ' - Build everything (concat, create js templates of html, etc) and place it into a "build" folder\n' +
                 ' - Run all your tests\n' +
                 ' - Watch your files for changes to do the above without any intervention\n' +
-                ' - Launch express server to host your app at http://localhost:9000/index.html\n' +
-                ' - Setup LiveReload so you immediately see changes in your browser (you still have to enable LiveReload on your browser)\n')
+                ' - Launch express server to host your app at http://localhost:3000/index.html\n' +
+                ' - Setup Browser Sync so you immediately see changes in your browser\n')
             );
         });
     },
@@ -80,16 +97,6 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
                 name: 'useTypeScript',
                 message: 'Would you like to use TypeScript (YES default)?',
                 default: true
-            },
-            {
-                type: 'list',
-                name: 'buildType',
-                message: 'What build system do you want to use (Gulp default)?',
-                choices: [
-                    'Gulp',
-                    'Grunt'
-                ],
-                default: 'Gulp'
             }
         ];
 
@@ -97,7 +104,6 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
             this.projectName = props.projectName;
             this.author = props.author;
             this.useTypeScript = props.useTypeScript;
-            this.buildType = props.buildType;
 
             done();
         }.bind(this));
@@ -106,7 +112,7 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
     config: function() {
         this.config.set('projectName', this.projectName);
         this.config.set('useTypeScript', this.useTypeScript);
-        this.config.set('buildType', this.buildType);
+        this.config.set('author', this.author);
         this.config.save();
     },
 
@@ -114,20 +120,23 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
         var root = this.isPathAbsolute(source) ? source : path.join(this.sourceRoot(), source);
         var files = this.expandFiles('**', { dot: true, cwd: root });
         var useTypeScript = this.config.get('useTypeScript');
-        var buildType = this.config.get('buildType');
 
         for (var i = 0; i < files.length; i++) {
             var f = files[i];
             var fExt = f.split('.').pop().toLowerCase();
+            //var specSuffix = '.spec.js';
+            //var isSpec = f.indexOf(specSuffix, f.length - specSuffix.length) !== -1;
+            var isTest = isTestFile(f);
             var fIsSource = path.dirname(f).split('/').shift() == 'src';
             var isExcluded = false;
-            if (fIsSource) {
-                if ((useTypeScript && fExt == 'js') || (!useTypeScript && fExt == 'ts')) {isExcluded = true;}
-            }
 
-            if (buildType == 'Gulp' && f.toLowerCase() == '_gruntfile.js') { isExcluded = true }
-            if (buildType == 'Grunt' && f.toLowerCase() == '_gulpfile.js') { isExcluded = true }
-            if (buildType == 'Grunt' && f.toLowerCase() == '_gulp.config.js') { isExcluded = true }
+            if (fIsSource) {
+                // Exclude if Typescript and it is a Javascript file AND it's not a spec file
+                // (we run all tests in Javascript) or if we use Javascript and it's a Typescript file
+                if ((useTypeScript && fExt == 'js' && !isTest) || (!useTypeScript && fExt == 'ts')) {
+                    isExcluded = true;
+                }
+            }
 
             var src = path.join(root, f);
             if (!isExcluded) {

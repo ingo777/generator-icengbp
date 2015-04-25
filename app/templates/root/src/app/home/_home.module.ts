@@ -24,8 +24,8 @@ module <%= projectName %>.app.home
           "main":
           {
             controller: HomeController,
-            controllerAs: "vm",
-            templateUrl: "home/home.tpl.html"
+            controllerAs: "home",
+            templateUrl: "/src/app/home/home.tpl.html"
           }
         },
         data: {pageTitle: "Home"}

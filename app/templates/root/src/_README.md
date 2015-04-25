@@ -40,8 +40,3 @@ the header and footer. It declares with `ngApp` that this is `<%= projectName %>
 specifies the main `AppController` controller, and contains the `ngView` directive
 into which route templates are placed.
 
-Unlike any other HTML document (e.g. the templates), `index.html` is compiled as
-a Grunt template, so variables from `Gruntfile.js` and `package.json` can be
-referenced from within it. Changing `name` in `package.json` from
-"<%= projectName %>" will rename the resultant CSS and JavaScript placed in `build/`,
-so this HTML references them by variable for convenience.

@@ -46,7 +46,10 @@ module <%= fullModuleName %>
 
         public static Factory()
         {
-            var factory = ($parse, $http, $location) =>
+            var factory = (
+                $parse: angular.IParseProvider,
+                $http: angular.IHttpService,
+                $location: angular.ILocationService) =>
             {
                 return new <%= capitalModuleName %>($parse, $http, $location);
             };

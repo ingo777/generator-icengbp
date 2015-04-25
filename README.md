@@ -4,6 +4,17 @@
 > This generator is in turn based on the great generator-ngbp from where all the basic code has its origin.
 
 ## Latest Updates
+(XX/XX/XX)
+* Removed Grunt because it was too hard to keep them both in sync
+* Changed LiveReload to BrowserSync
+* Changed the names of the view models in the controller/templates to better support future ng-new-router
+* We now have to different builds, one for development and one for production
+* Removed the template from the generation of service module
+* Added Gulp tasks for bumping version
+* Changed testing to Mocha
+* Fixed tests for Typescript (now all tests are written in Javascript
+* Fixed Gulp task "Install"
+
 (03/29/15) 
 * Fixed some issues in gruntfile.js.
 * Fixed some issues in controller, directive and service sub modules.
@@ -22,12 +33,9 @@
 * Replaced the "module" sub generator with "controller"
 
 ## Todo
-* Fix tests for TypeScript. I havn't been able to fix that yet.
-* I would like to add Gulp support for the build process.
 * Enable automatic download of typed definition files for TypeScript (it works but because of some 
   breaking changes in the angular.d.ts file resently where ng was renamed to angular you have to 
-  make som manual changes everytime they get updated. Check the gruntfile.js for enabling it again, 
-  I just commented out the task in the build task)
+  make som manual changes everytime they get updated. 
 
 ## Quick Start
 Install generator-icengbp from npm, run:
@@ -66,8 +74,7 @@ $ yo icengbp:directive "directiveName"
 You can specify the root folder of the module via prompt - default is "app". DON'T include the controller/service/directive name in this path
 
 You have to authorize the overwrite of app.js when the subgenerator adds a dependency for your new module (the default is Y, so you can just hit enter at the prompt).
-There's also still a bug with grunt watch that doesn't always see new files in new folders - https://github.com/gruntjs/grunt-contrib-watch/issues/70. Stopping and
-re-running grunt watch will always work though.
+
 
 ### ngBoilerplate Tips
 
@@ -75,9 +82,9 @@ When adding bower modules, always install with
 ```
 $ bower install some-bower-module --save-dev
 ```
-Then manually edit the vendor_files.js variable in Gruntfile.js to add the full path to the js files you need from the vendor folder.
-This grunt variable is what is used to create the script tags in the header of your index.html in the build folder (dev site).
-When you run "grunt compile", this same variable is used to add the vendor files to the single, minified js file in the bin folder (prod site).
+Then manually edit the vendor_files.js variable in gulpfile.js to add the full path to the js files you need from the vendor folder.
+This Gulp variable is what is used to create the script tags in the header of your index.html in the build folder (dev site).
+When you run "gulp optimize", this same variable is used to add the vendor files to the single, minified js file in the build folder (prod site).
 
 ### More Info
 

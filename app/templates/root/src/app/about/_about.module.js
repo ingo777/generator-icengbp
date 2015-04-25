@@ -4,8 +4,8 @@
             url: '/about',
             views: {
                 'main': {
-                    controller: '<%= projectName %>.app.about.AboutController as vm',
-                    templateUrl: 'about/about.tpl.html'
+                    controller: '<%= projectName %>.app.about.AboutController as about',
+                    templateUrl: '/src/app/about/about.tpl.html'
                 }
             },
             data: {pageTitle: 'About'}

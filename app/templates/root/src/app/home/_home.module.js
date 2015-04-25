@@ -11,8 +11,8 @@
             url: '/home',
             views: {
                 'main': {
-                    controller: '<%= projectName %>.app.home.HomeController as vm',
-                    templateUrl: 'home/home.tpl.html'
+                    controller: '<%= projectName %>.app.home.HomeController as home',
+                    templateUrl: '/src/app/home/home.tpl.html'
                 }
             },
             data: {pageTitle: 'Home'}

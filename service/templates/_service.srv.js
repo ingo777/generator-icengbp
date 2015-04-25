@@ -7,7 +7,7 @@
         return {
             test: 'Never tested',
             testing: function() {
-                this.test = 'Tested ' + (++noOfTests) + '' times!'';
+                this.test = 'Tested ' + (++noOfTests) + ' times!';
             }
         };
     });

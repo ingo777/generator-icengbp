@@ -8,20 +8,20 @@ module <%= fullModuleName %>
 
     export class <%= capitalModuleName %>Module
     {
-        static $injector = ["$stateProvider", "$parse"];
+        static $injector /* angular.auto.IInjectorService */ = [];
 
-            constructor(private $stateProvider: angular.ui.IStateProvider, $parse: angular.IParseProvider)
-            {
-                this.init();
-            }
+        constructor()
+        {
+            this.init();
+        }
 
         private init(): void
         {
 
         }
     }
-    angular.module("<%= fullModuleName %>", ["ui.router"])
-        .config(["$stateProvider", ($stateProvider: angular.ui.IStateProvider, $parse: angular.IParseProvider) => {
-            return new <%= capitalModuleName %>Module($stateProvider, $parse);
-        }]);
+    angular.module("<%= fullModuleName %>", [])
+        .config(() => {
+            return new <%= capitalModuleName %>Module();
+        });
 }
