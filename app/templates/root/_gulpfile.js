@@ -321,7 +321,7 @@ gulp.task('wiredep', ['templatecache'], function() {
         .pipe($.plumber())
         .pipe(wiredep(options))
         .pipe($.inject(gulp.src(config.files.appjs, {read: false})))
-        .pipe(gulp.dest(config.folders.src));
+        .pipe(gulp.dest(config.folders.root));
 });
 
 gulp.task('inject-build', ['less', 'typescript', 'templatecache'], function() {

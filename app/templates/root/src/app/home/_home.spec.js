@@ -14,16 +14,21 @@ describe('home section', function () {
             // How to load additional modules with services, directives, etc
             //bard.appModule('<%= projectName %>.app.home', '<%= projectName %>.common.services.service1');
 
-            bard.inject('$controller', '$rootScope');
+            bard.inject('$controller', '$rootScope', 'logger');
             // How to inject above service
             //bard.inject('$controller', '$rootScope', 'service1');
+            sinon.spy(logger, 'info');
         });
 
         beforeEach(function() {
             $scope = $rootScope.$new();
-            HomeCtrl = $controller('<%= projectName %>.app.home.HomeController', {$scope: $scope});
+            HomeCtrl = $controller('<%= projectName %>.app.home.HomeController', {logger: logger});
             // How to inject service above into a controller
             //HomeCtrl = $controller('<%= projectName %>.app.home.HomeController', {service1: service1});
+        });
+
+        it('should have called logger.info', function() {
+            expect(logger.info).to.have.been.calledOnce;
         });
 
         it('should have a dummy test', function() {

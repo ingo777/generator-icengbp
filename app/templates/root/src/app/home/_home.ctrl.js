@@ -28,8 +28,10 @@
         alert('Congratulations');
     }
 
+    Home.$inject = ['logger'];
+
     /* @ngInject */
-    function Home() {
+    function Home(logger) {
         var vm = this;
 
         // The top section of a controller should be lean and make it easy to see the "signature" of the controller
@@ -42,7 +44,9 @@
          * A definitive place to put everything that needs to run when the controller starts.
          * Avoid writing any code outside of this function that executes immediately.
          */
-        function init() { }
+        function init() {
+            logger.info('Testar loggning');
+        }
 
         /**
          * Here comes the function definitions
