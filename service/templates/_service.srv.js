@@ -1,7 +1,8 @@
-(function(module) {
+(function() {
     'use strict';
 
-    module.factory('<%= camelModuleName %>', <%= camelModuleName %>);
+    angular.module('<%= fullModuleName %>')
+        .factory('<%= camelModuleName %>', <%= camelModuleName %>);
 
     <%= camelModuleName %>.$inject = ['$http'];
 
@@ -24,4 +25,4 @@
             service.test = 'Tested ' + noOfTests + ' times!';
         }
     }
-}(angular.module('<%= fullModuleName %>')));
+})();

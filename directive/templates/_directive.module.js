@@ -1,12 +1,11 @@
-(function (module) {
+(function () {
     'use strict';
 
-    module.config(config);
+    angular.module('<%= fullModuleName %>', ['ui.router'])
+        .config(config);
 
     config.$inject = ['$stateProvider'];
-    function config($stateProvider) {
-    }
 
-}(angular.module('<%= fullModuleName %>', [
-    'ui.router'
-])));
+    /* @ngInject */
+    function config($stateProvider) { }
+})();

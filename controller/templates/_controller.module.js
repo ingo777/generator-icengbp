@@ -1,7 +1,8 @@
-(function (module) {
+(function () {
     'use strict';
 
-    module.config(config);
+    angular.module('<%= fullModuleName %>', ['ui.router'])
+        .config(config);
 
     config.$inject = ['$stateProvider'];
 
@@ -56,6 +57,4 @@
 
         }
     }
-}(angular.module('<%= fullModuleName %>', [
-    'ui.router'
-])));
+})();

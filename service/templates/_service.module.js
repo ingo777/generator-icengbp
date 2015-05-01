@@ -1,4 +1,5 @@
-(function(module) {
+(function() {
     'use strict';
 
-}(angular.module('<%= fullModuleName %>', [])));
+    angular.module('<%= fullModuleName %>', []);
+})();

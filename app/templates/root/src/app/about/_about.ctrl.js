@@ -1,9 +1,12 @@
-(function(module) {
+(function() {
+    'use strict';
+
+    angular.module('<%= projectName %>.app.about')
+        .controller('<%= projectName %>.app.about.AboutController', About);
+
     var AboutViewModel = {
         test: 'Test string from AboutViewModel'
     };
-
-    module.controller('<%= projectName %>.app.about.AboutController', About);
 
     /* @ngInject */
     function About() {
@@ -26,4 +29,4 @@
          * Here comes the function definitions
          */
     }
-}(angular.module('<%= projectName %>.app.about')));
+})();

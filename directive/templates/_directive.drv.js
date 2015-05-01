@@ -1,7 +1,8 @@
-(function(module) {
+(function() {
     'use strict';
 
-    module.directive('<%= camelModuleName %>', <%= camelModuleName %>);
+    angular.module('<%= fullModuleName %>')
+        .directive('<%= camelModuleName %>', <%= camelModuleName %>);
 
     <%= camelModuleName %>.$inject = ['$parse'];
 
@@ -76,4 +77,4 @@
             vm.test = 'Directive link tested ' + vm.noOfClicks + ' times';
         }
     }
-}(angular.module('<%= fullModuleName %>')));
+})();

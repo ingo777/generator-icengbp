@@ -1,7 +1,8 @@
-(function(module) {
+(function() {
     'use strict';
 
-    module.controller('<%= projectName %>.app.index.IndexController', Index);
+    angular.module('<%= projectName %>.app.index')
+        .controller('<%= projectName %>.app.index.IndexController', Index);
 
     /* @ngInject */
     function Index() {
@@ -30,4 +31,4 @@
         }
     }
 
-}(angular.module('<%= projectName %>.app.index')));
+})();

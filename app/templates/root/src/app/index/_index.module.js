@@ -1,7 +1,8 @@
-(function(module) {
+(function() {
     'use strict';
 
-    module.config(config);
+    angular.module('<%= projectName %>.app.index', ['ui.router'])
+        .config(config);
 
     config.$inject = ['$stateProvider'];
 
@@ -18,7 +19,4 @@
             data: {pageTitle: 'Index'}
         });
     }
-
-}(angular.module('<%= projectName %>.app.index', [
-    'ui.router'
-])));
+})();

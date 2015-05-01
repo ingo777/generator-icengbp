@@ -1,22 +1,24 @@
-(function(app) {
+(function() {
     'use strict';
 
-    app.config(toastrConfig);
+    angular.module('<%= projectName %>')
+        .config(toastrConfig)
+        .config(configure);
 
     toastrConfig.$inject = ['toastr'];
+
     /* @ngInject */
     function toastrConfig(toastr) {
         toastr.options.timeOut = 4000;
         toastr.options.positionClass = 'toast-bottom-right';
     }
 
-    app.config(configure);
-
     var config = {
         appErrorPrefix: '[iceCool Error] ' //Configure the exceptionHandler decorator
     };
 
     configure.$inject = ['$compileProvider', '$logProvider', '$urlRouterProvider', 'exceptionHandlerProvider'];
+
     /* @ngInject */
     function configure($compileProvider, $logProvider,
                        $urlRouterProvider, exceptionHandlerProvider) {
@@ -32,4 +34,4 @@
         exceptionHandlerProvider.configure(config.appErrorPrefix);
     }
 
-}(angular.module('<%= projectName %>')));
+})();

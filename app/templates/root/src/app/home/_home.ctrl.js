@@ -9,7 +9,14 @@
  * Regardless, so long as dependencies are managed correctly, the build process
  * will automatically take take of the rest.
  */
-(function(module) {
+(function() {
+    'use strict';
+
+    // As you add controllers to a module and they grow in size, feel free to place them in their own files.
+    // Let each module grow organically, adding appropriate organization and sub-folders as needed.
+    angular.module('<%= projectName %>.app.home')
+        .controller('<%= projectName %>.app.home.HomeController', Home);
+
     var HomeViewModel = {
         someVar: 'blue',
         someList: ['one', 'two', 'three'],
@@ -20,10 +27,6 @@
     function congrats() {
         alert('Congratulations');
     }
-
-    // As you add controllers to a module and they grow in size, feel free to place them in their own files.
-    //  Let each module grow organically, adding appropriate organization and sub-folders as needed.
-    module.controller('<%= projectName %>.app.home.HomeController', Home);
 
     /* @ngInject */
     function Home() {
@@ -46,4 +49,4 @@
          */
     }
     // The name of the module, followed by its dependencies (at the bottom to facilitate enclosure)
-}(angular.module('<%= projectName %>.app.home')));
+})();

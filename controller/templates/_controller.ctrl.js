@@ -1,7 +1,8 @@
-(function (module) {
+(function () {
     'use strict';
 
-    module.controller('<%= fullModuleName %>.<%= capitalModuleName %>Controller', <%= capitalModuleName %>);
+    angular.module('<%= fullModuleName %>')
+        .controller('<%= fullModuleName %>.<%= capitalModuleName %>Controller', <%= capitalModuleName %>);
 
     <%= capitalModuleName %>.$inject = ['$location'];
 
@@ -30,4 +31,4 @@
          */
     }
 
-}(angular.module('<%= fullModuleName %>')));
+})();

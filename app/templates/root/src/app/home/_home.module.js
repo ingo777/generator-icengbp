@@ -4,9 +4,11 @@
  * The build system ensures that all the *.module.js files get included prior to any other .js files, which
  * ensures that all module declarations occur before any module references.
  */
-(function(module) {
+(function() {
+    'use strict';
 
-    module.config(config);
+    angular.module('<%= projectName %>.app.home', ['ui.router'])
+        .config(config);
 
     config.$inject = ['$stateProvider'];
     function config($stateProvider) {
@@ -23,6 +25,4 @@
     }
 
     // The name of the module, followed by its dependencies (at the bottom to facilitate enclosure)
-}(angular.module('<%= projectName %>.app.home', [
-    'ui.router'
-])));
+})();
