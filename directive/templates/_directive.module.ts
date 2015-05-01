@@ -8,7 +8,7 @@ module <%= fullModuleName %>
 
     export class <%= capitalModuleName %>Module
     {
-        static $injector /*:angular.auto.IInjectorService */ = ["$stateProvider", "$parse"];
+        static $inject /*:angular.auto.IInjectorService */ = ["$stateProvider", "$parse"];
 
         constructor(private $stateProvider: angular.ui.IStateProvider, $parse: angular.IParseProvider)
         {
@@ -19,17 +19,6 @@ module <%= fullModuleName %>
         {
             this.$stateProvider.state("<%= folderAndFileName %>", <angular.ui.IState>
             {
-                //url: "/<%= subPath %><%= folderAndFileName %>",
-                //views:
-                //{
-                //    "main":
-                //    {
-                //        controller: <%= capitalModuleName %>Controller,
-                //        controllerAs: "<%= camelModuleName %>",
-                //        templateUrl: "<%= modulePath %>/<%= folderAndFileName %>.tpl.html"
-                //    }
-                //},
-                //data: {pageTitle: "<%= capitalModuleName %>"}
             });
         }
     }

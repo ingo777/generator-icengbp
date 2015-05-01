@@ -13,11 +13,9 @@ module <%= projectName %>.app.index
     }
 
     export class IndexController {
-        static $injector = ["$scope"];
-
         indexViewModel = new IndexViewModel();
 
-        constructor(private $scope: angular.IScope) {
+        constructor() {
 
         }
 

@@ -41,7 +41,8 @@ module <%= fullModuleName %>
 
         testing(): void
         {
-            this.test = "Tested " + ++this.noOfTests + " times!";
+            this.noOfTests++;
+            this.test = "Tested " + this.noOfTests + " times!";
         }
 
         public static Factory()

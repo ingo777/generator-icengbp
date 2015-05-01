@@ -1,15 +1,27 @@
 (function(module) {
     'use strict';
 
-    module.factory('<%= camelModuleName %>', function () {
+    module.factory('<%= camelModuleName %>', <%= camelModuleName %>);
+
+    <%= camelModuleName %>.$inject = ['$http'];
+
+    /* @ngInject */
+    function <%= camelModuleName %>($http) {
         var noOfTests = 0;
 
-        return {
+        var service = {
             test: 'Never tested',
-            testing: function() {
-                this.test = 'Tested ' + (++noOfTests) + ' times!';
-            }
+            testing: testing
         };
-    });
 
+        return service;
+
+        /**
+         * Here comes the function definitions
+         */
+        function testing() {
+            noOfTests++;
+            service.test = 'Tested ' + noOfTests + ' times!';
+        }
+    }
 }(angular.module('<%= fullModuleName %>')));

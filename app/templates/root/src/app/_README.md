@@ -7,12 +7,14 @@ src/
   |- app/
   |  |- home/
   |  |- about/
-  |  |- app.js
+  |  |- app.module.js
+  |  |- app.config.js
+  |  |- app.ctrl.js
   |  |- app.spec.js
 ```
 
 The `src/app` directory contains all code specific to this application. Apart
-from `app.js` and its accompanying tests (discussed below), this directory is
+from `app.module.js` and its accompanying tests (discussed below), this directory is
 filled with subdirectories corresponding to high-level sections of the
 application, often corresponding to top-level routes. Each directory can have as
 many subdirectories as it needs, and the build system will understand what to
@@ -26,7 +28,7 @@ As `ngBoilerplate` is quite minimal, take a look at the two provided submodules
 to gain a better understanding of how these are used as well as to get a
 glimpse of how powerful this simple construct can be.
 
-## `app.js`
+## `app.module.js`
 
 This is our main app configuration file. It kickstarts the whole process by
 requiring all the modules from `src/app` that we need. We must load these now to
@@ -54,7 +56,7 @@ angular.module( '<%= projectName %>', [
 
 With app modules broken down in this way, all routing is performed by the
 submodules we include, as that is where our app's functionality is really
-defined.  So all we need to do in `app.js` is specify a default route to follow,
+defined.  So all we need to do in `app.module.js` is specify a default route to follow,
 which route of course is defined in a submodule. In this case, our `home` module
 is where we want to start, which has a defined route for `/home` in
 `src/app/home/home.js`.
@@ -90,5 +92,5 @@ not specific to the template or route, such as menu logic or page title wiring.
 
 One of the design philosophies of `ngBoilerplate` is that tests should exist
 alongside the code they test and that the build system should be smart enough to
-know the difference and react accordingly. As such, the unit test for `app.js`
+know the difference and react accordingly. As such, the unit test for `app.module.js`
 is `app.spec.js`, though it is quite minimal.

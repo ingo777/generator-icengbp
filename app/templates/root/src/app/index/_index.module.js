@@ -1,7 +1,12 @@
 (function(module) {
     'use strict';
 
-    module.config(function ($stateProvider) {
+    module.config(config);
+
+    config.$inject = ['$stateProvider'];
+
+    /* @ngInject */
+    function config($stateProvider) {
         $stateProvider.state('index', {
             url: '/',
             views: {
@@ -12,7 +17,7 @@
             },
             data: {pageTitle: 'Index'}
         });
-    });
+    }
 
 }(angular.module('<%= projectName %>.app.index', [
     'ui.router'

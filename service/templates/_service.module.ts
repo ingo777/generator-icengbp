@@ -8,7 +8,7 @@ module <%= fullModuleName %>
 
     export class <%= capitalModuleName %>Module
     {
-        static $injector /* angular.auto.IInjectorService */ = [];
+        //static $inject /* angular.auto.IInjectorService */ = [];
 
         constructor()
         {

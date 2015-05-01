@@ -11,10 +11,12 @@
 * We now have to different builds, one for development and one for production
 * Removed the template from the generation of service module
 * Added Gulp tasks for bumping version
-* Changed testing to Mocha
+* Changed testing to Mocha                  
 * Fixed tests for Typescript (now all tests are written in Javascript
 * Fixed Gulp task "Install"
-
+* Refactored mainly the Javascript to follow John Papa's style guide more.
+* Added some comments and show-cases for common scenarios I've struggled with like testing and directives
+ 
 (03/29/15) 
 * Fixed some issues in gruntfile.js.
 * Fixed some issues in controller, directive and service sub modules.
@@ -34,8 +36,9 @@
 
 ## Todo
 * Enable automatic download of typed definition files for TypeScript (it works but because of some 
-  breaking changes in the angular.d.ts file resently where ng was renamed to angular you have to 
-  make som manual changes everytime they get updated. 
+  breaking changes in the angular.d.ts file recently where ng was renamed to angular you have to 
+  make som manual changes every time they get updated. 
+* Create a new branch with Angular 1.4 router
 
 ## Quick Start
 Install generator-icengbp from npm, run:
@@ -73,7 +76,7 @@ $ yo icengbp:directive "directiveName"
 
 You can specify the root folder of the module via prompt - default is "app". DON'T include the controller/service/directive name in this path
 
-You have to authorize the overwrite of app.js when the subgenerator adds a dependency for your new module (the default is Y, so you can just hit enter at the prompt).
+You have to authorize the overwrite of app.module.js when the subgenerator adds a dependency for your new module (the default is Y, so you can just hit enter at the prompt).
 
 
 ### ngBoilerplate Tips

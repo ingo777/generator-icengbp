@@ -22,7 +22,7 @@ module <%= fullModuleName %>
 
     export class <%= capitalModuleName %>Controller
     {
-        static $injector = ["$scope"];
+        static $inject = ["$scope"];
 
         constructor(private $scope: I<%= capitalModuleName %>Scope)
         {

@@ -96,13 +96,13 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
 
     _addModuleToAppJs: function app(moduleName) {
         var hook   = ']), window));',
-            path   = 'src/app/app.js',
+            path   = 'src/app/app.module.js',
             insert = "    '" + moduleName + "',\n";
 
         if (this.config.get('useTypeScript')) {
-            hook = ']).config(';
-            path = 'src/app/app.ts';
-            insert = "    '" + moduleName + "',\n  ";
+            hook = ']).run(()';
+            path = 'src/app/app.module.ts';
+            insert = "    \"" + moduleName + "\",\n";
         }
 
         var file   = this.readFileAsString(path);

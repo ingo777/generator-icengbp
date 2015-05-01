@@ -25,46 +25,57 @@ module <%= fullModuleName %> {
 
     export class <%= capitalModuleName %>
     {
+        private test: string;
         private noOfClicks: number;
+        private testing: Function;
 
-        // Directive setup
-        public templateUrl = "<%= moduleUrlPath %>/<%= folderAndFileName %>.tpl.html";
         public scope = { // Isolated scopes
             // test: "@", one-way binding from a parent scope to the isolated scope.
             // If parent changes the isolated scope will reflect that change but not the other way around
             // attribute: "=info": two-way binding between the attribute 'attribute' and the property 'info'.
             // "&onClose": bind to an expression like a function call or something
         };
-        // the content of the directive template will replace the element that the directive is declared on
-        public replace = true;
         // Restrict to Element, Attribute, Class
         public restrict = "EAC";
+        // Directive setup
+        public templateUrl = "<%= moduleUrlPath %>/<%= folderAndFileName %>.tpl.html";
+        // the content of the directive template will replace the element that the directive is declared on
+        public replace = true;
         // enables you to write other HTML stuff inside of the directive. Use with ng-transclude in the tag
         public transclude = false;
         // or ["^myTabs", "^ngModel"] where the ^ means it looks for the controller on the parents, without
         // it looks for the controller on just its own element
         public require = "";
-
-        public link: (scope: I<%= capitalModuleName %>Scope,
-            element: angular.IAugmentedJQuery,
-            attrs: angular.IAttributes) => void;
+        // use the "controller as" syntax
+        public controllerAs = "vm";
+        // true if it's a isolated scope
+        public bindToController = false;
 
         constructor(private $parse:angular.IParseProvider)
         {
-            this.noOfClicks = 0;
+        }
 
-            this.link = (scope: I<%= capitalModuleName %>Scope,
+        // Use fat arrow to get "this" object to work
+        link = (scope: I<%= capitalModuleName %>Scope,
                 element: angular.IAugmentedJQuery,
-                attrs: angular.IAttributes) =>
+                attrs: angular.IAttributes,
+                ctrl: angular.IControllerService) =>
+        {
+            element.on("mouseenter", this.mouseEnter);
+            scope.$on("$destroy", this.destruct);
+        };
+
+        // No fat arrow here because we want a new "this" object for the controller
+        controller(): void
+        {
+            var vm = this;
+            vm.test = "Directive link never tested";
+            vm.noOfClicks = 0;
+
+            vm.testing = function ()
             {
-                scope.test = "Testing, testing";
-
-                scope.testing = () =>
-                {
-                    scope.test = "Has tested " + (++this.noOfClicks) + " times!";
-                };
-
-                scope.$on("$destroy", this.destruct);
+                vm.noOfClicks++;
+                vm.test = "Directive link tested " + vm.noOfClicks + " times";
             };
         }
 
@@ -80,8 +91,14 @@ module <%= fullModuleName %> {
             return directive;
         }
 
-        private destruct():void
+        private mouseEnter(): void
         {
+            console.log("mouseenter");
+        }
+
+        private destruct(): void
+        {
+            console.log("destruct");
         }
     }
 

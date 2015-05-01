@@ -1,0 +1,59 @@
+/**
+ * Tests sit right alongside the file they are testing, which is more intuitive
+ * and portable than separating 'src' and 'test' directories. Additionally, the
+ * build process will exclude all '.spec.js' files from the build
+ * automatically.
+ */
+/* jshint -W117, -W030 */
+describe('home section', function () {
+    describe('isCurrentUrl', function () {
+        var HomeCtrl, $scope, sandbox;
+
+        beforeEach(function() {
+            sandbox = sinon.sandbox.create();
+
+            bard.appModule('iceApp.app.home', 'iceApp.common.services.srv1');
+            bard.inject('$controller', '$rootScope', 'srv1');
+
+            $scope = $rootScope.$new();
+            HomeCtrl = $controller('iceApp.app.home.HomeController', {srv1: srv1});
+
+            sinon.spy(srv1, 'testing');
+            sinon.spy(HomeCtrl, 'testService');
+        });
+
+        afterEach(function() {
+            sandbox.restore();
+        });
+
+        it('should call srv1', function() {
+            HomeCtrl.testService();
+            expect(srv1.testing).to.have.been.calledOnce;
+        });
+
+        it('should update srv1 text', function() {
+            var text1 = HomeCtrl.serviceText;
+
+            HomeCtrl.testService();
+            expect(srv1.test).to.not.equal(text1);
+        });
+
+        it('should get correct texts', function() {
+            expect(HomeCtrl.serviceText).to.equal('Never tested');
+
+            HomeCtrl.testService();
+
+            expect(srv1.test).to.equal('Tested 1 times!');
+        });
+
+        it('should return same text as property', function() {
+            var testText = HomeCtrl.testService();
+            console.log(testText);
+            expect(srv1.test).to.equal(testText);
+        });
+
+        it('should have a dummy test', function() {
+            expect(HomeCtrl).to.be.ok;
+        });
+    });
+});

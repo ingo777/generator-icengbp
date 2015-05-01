@@ -10,7 +10,9 @@ src/
   |- app/
   |  |- about/
   |  |- home/
-  |  |- app.js
+  |  |- app.module.js
+  |  |- app.config.js
+  |  |- app.ctrl.js
   |  |- app.spec.js
   |- assets/
   |- common/

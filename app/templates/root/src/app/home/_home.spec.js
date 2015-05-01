@@ -11,12 +11,19 @@ describe('home section', function () {
 
         beforeEach(function() {
             bard.appModule('<%= projectName %>.app.home');
+            // How to load additional modules with services, directives, etc
+            //bard.appModule('<%= projectName %>.app.home', '<%= projectName %>.common.services.service1');
+
             bard.inject('$controller', '$rootScope');
+            // How to inject above service
+            //bard.inject('$controller', '$rootScope', 'service1');
         });
 
         beforeEach(function() {
             $scope = $rootScope.$new();
             HomeCtrl = $controller('<%= projectName %>.app.home.HomeController', {$scope: $scope});
+            // How to inject service above into a controller
+            //HomeCtrl = $controller('<%= projectName %>.app.home.HomeController', {service1: service1});
         });
 
         it('should have a dummy test', function() {

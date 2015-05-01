@@ -15,10 +15,6 @@ module <%= projectName %>.app.home
 {
     "use strict";
 
-    export interface IHomeScope extends angular.IScope {
-        foobar: string;
-    }
-
     export class HomeViewModel {
         someVar:string = "blue";
         someList:Array<string> = ["one", "two", "three"];
@@ -29,21 +25,23 @@ module <%= projectName %>.app.home
     }
 
     export class HomeController {
-        static $injector = ["$scope"];
-        time:string;
         someObject:HomeViewModel;
 
-        constructor(private $scope:IHomeScope) {
+        static $inject = ["logger"];
+
+        constructor(private logger: any) {
+            logger.info("Navigated to Home");
+
             this.someObject = new HomeViewModel(); // Controller As syntax...preferred way
 
             this.init();
         }
 
-        private init():void {
-
-            // A definitive place to put everything that needs to run when the controller starts. Avoid
-            // writing any code outside of this function that executes immediately.
-        }
+        /**
+         * A definitive place to put everything that needs to run when the controller starts.
+         * Avoid writing any code outside of this function that executes immediately.
+         */
+        private init():void { }
     }
 
     angular.module("<%= projectName %>.app.home")

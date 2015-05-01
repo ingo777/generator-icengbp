@@ -6,7 +6,10 @@
  */
 (function(module) {
 
-    module.config(function ($stateProvider) {
+    module.config(config);
+
+    config.$inject = ['$stateProvider'];
+    function config($stateProvider) {
         $stateProvider.state('home', {
             url: '/home',
             views: {
@@ -17,7 +20,8 @@
             },
             data: {pageTitle: 'Home'}
         });
-    });
+    }
+
     // The name of the module, followed by its dependencies (at the bottom to facilitate enclosure)
 }(angular.module('<%= projectName %>.app.home', [
     'ui.router'
