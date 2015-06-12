@@ -1,8 +1,20 @@
 'use strict';
+
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+
+function matchFolder(file, matchPattern) {
+    var folder = path.dirname(file);
+    var isMatch = folder.indexOf(matchPattern, folder) !== -1;
+
+    if (isMatch) {
+        return true;
+    }
+
+    return false;
+}
 
 function isTestFile(file) {
     var specSuffix = '.spec.js';
@@ -12,15 +24,16 @@ function isTestFile(file) {
         return true;
     }
 
-    var testHelpersSuffix = 'test-helpers';
+    var folderToMatch = 'src/test-helpers';
+
+    return matchFolder(file, folderToMatch);
+}
+
+function isAssetsFile(file) {
+    var folderToMatch = 'src/assets';
     var folder = path.dirname(file);
-    var isTestHelpers = folder.indexOf(testHelpersSuffix, folder.length - testHelpersSuffix.length) !== -1;
 
-    if (isTestHelpers) {
-        return true;
-    }
-
-    return false;
+    return matchFolder(file, folderToMatch);
 }
 
 var IceNgbpGenerator = yeoman.generators.Base.extend({
@@ -124,16 +137,16 @@ var IceNgbpGenerator = yeoman.generators.Base.extend({
         for (var i = 0; i < files.length; i++) {
             var f = files[i];
             var fExt = f.split('.').pop().toLowerCase();
-            //var specSuffix = '.spec.js';
-            //var isSpec = f.indexOf(specSuffix, f.length - specSuffix.length) !== -1;
             var isTest = isTestFile(f);
+            var isAsset = isAssetsFile(f);
             var fIsSource = path.dirname(f).split('/').shift() == 'src';
             var isExcluded = false;
 
             if (fIsSource) {
-                // Exclude if Typescript and it is a Javascript file AND it's not a spec file
-                // (we run all tests in Javascript) or if we use Javascript and it's a Typescript file
-                if ((useTypeScript && fExt == 'js' && !isTest) || (!useTypeScript && fExt == 'ts')) {
+                // Exclude if Typescript and it is a Javascript file AND it's not a spec file or asset
+                // (we run all tests in Javascript and 3rd party assets could be in JavaScript) or if
+                // we use Javascript and it's a Typescript file
+                if ((useTypeScript && fExt == 'js' && !isTest && !isAsset) || (!useTypeScript && fExt == 'ts')) {
                     isExcluded = true;
                 }
             }

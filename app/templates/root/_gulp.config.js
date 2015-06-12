@@ -16,7 +16,8 @@ module.exports = function() {
         common_dir = 'common/',
         images_dir = 'images/',
         root_dir = './',
-        report_dir = 'report/';
+        report_dir = 'report/',
+        npm_dir = 'node_modules/';
 
     var index_html = 'index.html',
         templates_app_js = 'templates-app.js',
@@ -117,7 +118,7 @@ module.exports = function() {
                 js: [
                     vendor_dir + 'jquery/dist/jquery.js',
                     vendor_dir + 'angular/angular.js',
-                    //'node_modules/' + 'angular-hint/dist/hint.js',
+                    //npm_dir + 'angular-hint/dist/hint.js',
                     vendor_dir + 'angular-resource/angular-resource.js',
                     vendor_dir + 'angular-ui-router/release/angular-ui-router.js',
                     vendor_dir + 'bootstrap/dist/js/bootstrap.js',
@@ -174,7 +175,8 @@ module.exports = function() {
             common: src_dir + common_dir,
             root: root_dir,
             report: report_dir,
-            assets: assets_dir
+            assets: assets_dir,
+            npm: npm_dir
         },
 
         /**
@@ -244,13 +246,14 @@ module.exports = function() {
                 useWiredep ? bowerFiles : config.files.vendor.js,
                 !useWiredep ? config.files.test.js : [],
                 config.specHelpers,
+                config.files.assets.js,
                 config.files.appjs,
                 config.folders.temp + config.files.templates_app_js,
                 config.folders.temp + config.files.templates_common_js,
                 config.serverIntegrationSpecs
             ),
             exclude: [
-                src_dir + assets_dir + '**/*.js'
+                //src_dir + assets_dir + '**/*.js'
             ],
             coverage: {
                 dir: report_dir + 'coverage',

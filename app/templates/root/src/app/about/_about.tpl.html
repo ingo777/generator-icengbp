@@ -6,6 +6,8 @@
 </div>
 <div class="col-md-4">
     {{about.time}}
+    <br/>
+    <button class="btn" ng-click="about.test()">Refresh</button>
 </div>
 </p>
 <p>
@@ -13,14 +15,9 @@
     View model object:
 </div>
 <div class="col-md-4">
-    {{about.someObject.test}}
+    {{about.someObject.someVariable}}
+    <br/>
+    <button class="btn" ng-click="about.someObject.someFunction()">Update</button>
 </div>
 </p>
 <p>
-<div class="col-md-4 col-md-offset-2">
-    Variable on the controller object, this should not work (...should be empty):
-</div>
-<div class="col-md-4">
-    {{time}}
-</div>
-</p>

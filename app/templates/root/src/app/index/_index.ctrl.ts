@@ -4,24 +4,21 @@ module <%= projectName %>.app.index
 {
     "use strict";
 
-    export class IndexViewModel {
-        testValue: string = "Testing value!";
-
-        test(): void {
-            alert("Testing!");
-        }
+    export interface IIndexController {
+        year: number;
     }
 
-    export class IndexController {
-        indexViewModel = new IndexViewModel();
+    export class IndexController implements IIndexController {
+        year: number;
 
+        /* @ngInject */
         constructor() {
+            this.year = new Date().getFullYear();
 
+            this.init();
         }
 
-        init() : void {
-
-        }
+        init(): void { }
     }
     angular.module("<%= projectName %>.app.index")
         .controller("<%= projectName %>.app.index.IndexController", IndexController);

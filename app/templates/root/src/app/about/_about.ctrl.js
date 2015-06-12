@@ -4,9 +4,14 @@
     angular.module('<%= projectName %>.app.about')
         .controller('<%= projectName %>.app.about.AboutController', About);
 
-    var AboutViewModel = {
-        test: 'Test string from AboutViewModel'
+    var SomeObject = {
+        someVariable: 'Test string',
+        someFunction: someFunction
     };
+
+    function someFunction() {
+        SomeObject.someVariable = 'Updated string';
+    }
 
     /* @ngInject */
     function About() {
@@ -15,7 +20,8 @@
         // The top section of a controller should be lean and make it easy to see the "signature" of the controller
         // at a glance.  All function definitions should be contained lower down.
         vm.time = new Date().toTimeString();
-        vm.someObject = AboutViewModel;
+        vm.test = test;
+        vm.someObject = SomeObject;
 
         init();
 
@@ -28,5 +34,8 @@
         /**
          * Here comes the function definitions
          */
+        function test() {
+            vm.time = new Date().toTimeString();
+        }
     }
 })();

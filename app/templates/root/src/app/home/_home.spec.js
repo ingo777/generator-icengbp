@@ -10,7 +10,11 @@ describe('home section', function () {
         var HomeCtrl, $scope;
 
         beforeEach(function() {
-            bard.appModule('<%= projectName %>.app.home');
+            bard.appModule(
+                '<%= projectName %>.app.home',
+                'blocks.logger'
+            );
+
             // How to load additional modules with services, directives, etc
             //bard.appModule('<%= projectName %>.app.home', '<%= projectName %>.common.services.service1');
 

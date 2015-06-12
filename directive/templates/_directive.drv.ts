@@ -17,14 +17,12 @@
 module <%= fullModuleName %> {
     "use strict";
 
-    export interface I<%= capitalModuleName %>Scope extends angular.IScope
-    {
+    export interface I<%= capitalModuleName %>Scope extends angular.IScope {
         test: string;
         testing(): void;
     }
 
-    export class <%= capitalModuleName %>
-    {
+    export class <%= capitalModuleName %> {
         private test: string;
         private noOfClicks: number;
         private testing: Function;
@@ -51,53 +49,51 @@ module <%= fullModuleName %> {
         // true if it's a isolated scope
         public bindToController = false;
 
-        constructor(private $parse:angular.IParseProvider)
-        {
+        static $inject: Array<string> = ["$parse"];
+
+        /* @ngInject */
+        constructor(private $parse:angular.IParseProvider) {
         }
 
         // Use fat arrow to get "this" object to work
+        /* @ngInject */
         link = (scope: I<%= capitalModuleName %>Scope,
                 element: angular.IAugmentedJQuery,
                 attrs: angular.IAttributes,
-                ctrl: angular.IControllerService) =>
-        {
+                ctrl: angular.IControllerService) => {
             element.on("mouseenter", this.mouseEnter);
             scope.$on("$destroy", this.destruct);
         };
 
         // No fat arrow here because we want a new "this" object for the controller
-        controller(): void
-        {
+        /* @ngInject */
+        controller(): void {
             var vm = this;
             vm.test = "Directive link never tested";
             vm.noOfClicks = 0;
 
-            vm.testing = function ()
-            {
+            vm.testing = () => {
                 vm.noOfClicks++;
                 vm.test = "Directive link tested " + vm.noOfClicks + " times";
             };
         }
 
-        public static Factory()
-        {
-            var directive = ($parse: angular.IParseProvider) =>
-            {
+        public static Factory() {
+            /* @ngInject */
+            var directive = ($parse: angular.IParseProvider) => {
                 return new <%= capitalModuleName %>($parse);
             };
 
-            directive["$inject"] = ["$parse"];
+            directive["$inject"]: Array<string> = ["$parse"];
 
             return directive;
         }
 
-        private mouseEnter(): void
-        {
+        private mouseEnter(): void {
             console.log("mouseenter");
         }
 
-        private destruct(): void
-        {
+        private destruct(): void {
             console.log("destruct");
         }
     }

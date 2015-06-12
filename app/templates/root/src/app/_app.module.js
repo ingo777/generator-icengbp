@@ -18,8 +18,7 @@
         '<%= projectName %>.app.home',
         '<%= projectName %>.app.about',
         '<%= projectName %>.app.index',
-    ])
-    .run(run);
+]).run(run);
 
     // Any code that needs to run when an application starts should be declared
     // in a factory, exposed via a function, and injected into the run block

@@ -14,44 +14,41 @@
  */
 ///<reference path="<%= pathBackToRoot %>typings/angularjs/angular.d.ts"/>
 
-module <%= fullModuleName %>
-{
+module <%= fullModuleName %> {
     "use strict";
 
-    export interface I<%= capitalModuleName %>
-    {
+    export interface I<%= capitalModuleName %> {
         test: string;
         testing(): void;
     }
 
-    export class <%= capitalModuleName %>
-    {
+    export class <%= capitalModuleName %> {
         noOfTests: number;
         test: string;
 
-        constructor(private $parse:angular.IParseProvider, private $http: angular.IHttpService, private $location: angular.ILocationService)
-        {
+        static $inject: Array<string> = ["$parse", "$http", "$location"];
+
+        /* @ngInject */
+        constructor(private $parse:angular.IParseProvider, private $http: angular.IHttpService, private $location: angular.ILocationService) {
             this.noOfTests = 0;
             this.test = "Never tested";
         }
 
-        private init(): void
-        {
-        }
+        private init(): void { }
 
-        testing(): void
-        {
+        testing(): void {
             this.noOfTests++;
             this.test = "Tested " + this.noOfTests + " times!";
         }
 
-        public static Factory()
-        {
+
+        public static Factory() {
             var factory = (
                 $parse: angular.IParseProvider,
                 $http: angular.IHttpService,
-                $location: angular.ILocationService) =>
-            {
+                $location: angular.ILocationService) => {
+
+                /* @ngInject */
                 return new <%= capitalModuleName %>($parse, $http, $location);
             };
 
@@ -60,8 +57,7 @@ module <%= fullModuleName %>
             return factory;
         }
 
-        private destruct():void
-        {
+        private destruct():void {
         }
     }
 

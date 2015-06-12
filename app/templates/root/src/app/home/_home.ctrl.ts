@@ -11,29 +11,38 @@
  * Regardless, so long as dependencies are managed correctly, the build process
  * will automatically take take of the rest.
  */
-module <%= projectName %>.app.home
-{
+module <%= projectName %>.app.home {
     "use strict";
 
-    export class HomeViewModel {
-        someVar:string = "blue";
-        someList:Array<string> = ["one", "two", "three"];
+    export interface ISomeClass {
+        someVar: string;
+        someList: Array<string>;
+        someFunctionUsedByTheHomePage(): void;
+    }
 
-        someFunctionUsedByTheHomePage():void {
+    export interface IHomeController {
+
+    }
+
+    export class SomeClass implements ISomeClass {
+        someVar: string = "blue";
+        someList: Array<string> = ["one", "two", "three"];
+
+        someFunctionUsedByTheHomePage(): void {
             alert("Congratulations");
         }
     }
 
-    export class HomeController {
-        someObject:HomeViewModel;
+    export class HomeController implements IHomeController {
+        someObject: SomeClass;
 
-        static $inject = ["logger"];
+        static $inject: Array<string> = ["logger"];
 
+        /* @ngInject */
         constructor(private logger: any) {
             logger.info("Navigated to Home");
 
-            this.someObject = new HomeViewModel(); // Controller As syntax...preferred way
-
+            this.someObject = new SomeClass(); // Controller As syntax...preferred way
             this.init();
         }
 

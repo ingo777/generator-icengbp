@@ -2,21 +2,18 @@
 ///<reference path="<%= pathBackToRoot %>vendor/angular-ui-router/api/angular-ui-router.d.ts"/>
 ///<reference path="<%= folderAndFileName %>.srv.ts"/>
 
-module <%= fullModuleName %>
-{
+module <%= fullModuleName %> {
     "use strict";
 
-    export class <%= capitalModuleName %>Module
-    {
-        //static $inject /* angular.auto.IInjectorService */ = [];
+    export class <%= capitalModuleName %>Module {
+        static $inject: Array<string> = [];
 
-        constructor()
-        {
+        /* @ngInject */
+        constructor() {
             this.init();
         }
 
-        private init(): void
-        {
+        private init(): void {
 
         }
     }

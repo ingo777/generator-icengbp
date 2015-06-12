@@ -52,7 +52,7 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
         this.moduleUrlPath = '/' + path.join('src', this.rootFolder, this.folderAndFileName).replace(/\\/g, '/');
         // Create the module namespaced by the folder path with slashes replaced by dots
         this.fullModuleName = this.projectName + '.' + this.rootFolder.replace(/\//g, '.') + '.' + this.moduleName;
-        this.pathBackToRoot = "../../../";
+        this.pathBackToRoot = "../../../../";
 
         var idxOf = this.rootFolder.indexOf('/');
 
@@ -99,14 +99,14 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
     },
 
     _addModuleToAppJs: function app(moduleName) {
-        var hook   = ']), window));',
+        var hook   = ']).run(run);',
             path   = 'src/app/app.module.js',
-            insert = "    '" + moduleName + "',\n";
+            insert = "        '" + moduleName + "',\n";
 
         if (this.config.get('useTypeScript')) {
             hook = ']).run(()';
             path = 'src/app/app.module.ts';
-            insert = "    \"" + moduleName + "\",\n";
+            insert = "        \"" + moduleName + "\",\n";
         }
 
         var file   = this.readFileAsString(path);

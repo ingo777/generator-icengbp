@@ -2,28 +2,25 @@
 ///<reference path="<%= pathBackToRoot %>vendor/angular-ui-router/api/angular-ui-router.d.ts"/>
 ///<reference path="<%= folderAndFileName %>.drv.ts"/>
 
-module <%= fullModuleName %>
-{
+module <%= fullModuleName %> {
     "use strict";
 
-    export class <%= capitalModuleName %>Module
-    {
-        static $inject /*:angular.auto.IInjectorService */ = ["$stateProvider", "$parse"];
+    export class <%= capitalModuleName %>Module {
+        static $inject: Array<string> = ["$stateProvider", "$parse"];
 
-        constructor(private $stateProvider: angular.ui.IStateProvider, $parse: angular.IParseProvider)
-        {
+        /* @ngInject */
+        constructor(private $stateProvider: angular.ui.IStateProvider, $parse: angular.IParseProvider) {
             this.init();
         }
 
-        private init(): void
-        {
-            this.$stateProvider.state("<%= folderAndFileName %>", <angular.ui.IState>
-            {
+        private init(): void {
+            this.$stateProvider.state("<%= folderAndFileName %>", <angular.ui.IState> {
+
             });
         }
     }
     angular.module("<%= fullModuleName %>", ["ui.router"])
-        .config(["$stateProvider", ($stateProvider: angular.ui.IStateProvider, $parse: angular.IParseProvider) => {
+        .config(["$stateProvider", "$parse", ($stateProvider: angular.ui.IStateProvider, $parse: angular.IParseProvider) => { /* @ngInject */
             return new <%= capitalModuleName %>Module($stateProvider, $parse);
         }]);
 }

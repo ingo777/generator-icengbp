@@ -17,7 +17,7 @@
     angular.module('<%= projectName %>.app.home')
         .controller('<%= projectName %>.app.home.HomeController', Home);
 
-    var HomeViewModel = {
+    var SomeObject = {
         someVar: 'blue',
         someList: ['one', 'two', 'three'],
 
@@ -36,7 +36,7 @@
 
         // The top section of a controller should be lean and make it easy to see the "signature" of the controller
         // at a glance.  All function definitions should be contained lower down.
-        vm.someObject = HomeViewModel;
+        vm.someObject = SomeObject;
 
         init();
 

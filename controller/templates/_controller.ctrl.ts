@@ -11,28 +11,49 @@
  */
 ///<reference path="<%= pathBackToRoot %>typings/angularjs/angular.d.ts"/>
 
-module <%= fullModuleName %>
-{
+module <%= fullModuleName %> {
     "use strict";
 
-    export interface I<%= capitalModuleName %>Scope extends angular.IScope
-    {
-
+    export interface I<%= capitalModuleName %>Controller {
+        testText: string;
+        testFunction(): void;
     }
 
-    export class <%= capitalModuleName %>Controller
-    {
-        static $inject = ["$scope"];
+    /* @ngInject */
+    export class <%= capitalModuleName %>Controller implements I<%= capitalModuleName %>Controller {
+        testText: string;
 
-        constructor(private $scope: I<%= capitalModuleName %>Scope)
-        {
+        static $inject: Array<string> = [];
+        //static $inject: Array<string> = ["service1"];
+
+        /**
+         * Constructor to initialize everything
+         */
+        /* @ngInject */
+        constructor(/*service1: <%= camelModuleName %>.common.services.service1.IService1*/) {
+            this.testText = "Test text";
+
             this.init();
         }
 
-        private init(): void
-        {
+        /**
+         * A definitive place to put everything that needs to run when the controller starts.
+         * Avoid writing any code outside of this function that executes immediately like
+         * loading initial data, setting everything up, etc.
+         * NOTE: If you need to conditionally cancel the route before you start use the controller
+         * or you need to have some data BEFORE the controller starts, then you should use a route
+         * resolve instead (see the <%= camelModuleName %>.module.js file for a simple example
+         */
+        private init(): void {
             // A definitive place to put everything that needs to run when the controller starts. Avoid
             // writing any code outside of this function that executes immediately.
+        }
+
+        /**
+         * Here are the functions for this class
+         */
+        testFunction(): void {
+            this.testText = "New test text";
         }
     }
 

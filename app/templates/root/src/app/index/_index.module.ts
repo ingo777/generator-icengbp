@@ -10,6 +10,7 @@ module <%= projectName %>.app.index
     {
         static $injector = ["$stateProvider"];
 
+        /* @ngInject */
         constructor(private $stateProvider: angular.ui.IStateProvider)
         {
             this.init();
@@ -34,7 +35,7 @@ module <%= projectName %>.app.index
         }
     }
     angular.module("<%= projectName %>.app.index", ["ui.router"])
-        .config(["$stateProvider", ($stateProvider: angular.ui.IStateProvider) => {
+        .config(["$stateProvider", ($stateProvider: angular.ui.IStateProvider) => { /* @ngInject */
             return new IndexModule($stateProvider);
         }]);
 }

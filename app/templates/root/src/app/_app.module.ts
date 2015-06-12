@@ -6,9 +6,12 @@ module <%= projectName %>.app {
     // Any code that needs to run when an application starts should be declared
     // in a factory, exposed via a function, and injected into the run block
     export class AppRun {
-        //static $inject = ['authenticator', 'translator'];
         foo:string;
 
+        static $inject: Array<string> = [];
+        //static $inject: Array<string> = ['authenticator', 'translator'];
+
+        /* @ngInject */
         constructor(/* authenticator: IAuthenticator, translator: ITranslator */) {
             //authenticator.initialize();
             //translator.initialize();
@@ -30,7 +33,7 @@ module <%= projectName %>.app {
         "<%= projectName %>.app.home",
         "<%= projectName %>.app.about",
         "<%= projectName %>.app.index",
-    ]).run(() => {
+]).run(() => {
         return new AppRun();
     });
 }
